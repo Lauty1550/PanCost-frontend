@@ -1,7 +1,7 @@
 .menu {
   display: flex;
   gap: 20px;
-  border: 1px solid black;
+  border: 1px solid rgb(82 71 71 / 50%);
   border-radius: 5px;
   padding: 5px;
   align-items: center;

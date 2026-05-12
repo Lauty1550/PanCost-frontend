@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "../css/Menu.css";
+import { useAppcontext } from "../hooks/useAppContext";
 
 export default function Menu() {
-  const [selection, setSelection] = useState(0);
+  const { selection, setSelection } = useAppcontext();
 
   return (
     <div className="menu">
