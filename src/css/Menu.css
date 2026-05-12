@@ -1,0 +1,37 @@
+.menu {
+  display: flex;
+  gap: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-around;
+  user-select: none;
+}
+
+.menu-selection,
+.active {
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.menu-selection:hover {
+  border: 1px solid grey;
+  background-color: rgb(77 74 74 / 30%);
+  cursor: pointer;
+}
+
+.menu-selection h2,
+.active h2 {
+  margin: 0;
+}
+
+.menu-selection button {
+  background-color: transparent;
+  border: none;
+}
+
+.active {
+  background-color: wheat;
+}

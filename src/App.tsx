@@ -1,3 +1,12 @@
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import "./css/App.css";
+
 export default function App() {
-  return <h1>Empezamos</h1>;
+  return (
+    <div className="page">
+      <Header />
+      <Menu />
+    </div>
+  );
 }
