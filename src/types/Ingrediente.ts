@@ -4,8 +4,8 @@ export interface Ingrediente {
   id: number;
   nombre: string;
   precioCompra: number;
-  CantidadCompra: number;
-  UnidadCompra: Unidad;
+  cantidadCompra: number;
+  unidadCompra: Unidad;
 }
 
 export type CreateIngredienteDTO = Omit<Ingrediente, "id">;

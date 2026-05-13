@@ -1,6 +1,4 @@
-import { useContext } from "react";
 import "../css/Content.css";
-import { AppContext } from "../context/AppContext";
 import Recetas from "./Recetas";
 import Ingredientes from "./Ingredientes";
 import { useAppcontext } from "../hooks/useAppContext";

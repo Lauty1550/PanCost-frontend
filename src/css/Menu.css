@@ -35,3 +35,7 @@
 .active {
   background-color: wheat;
 }
+
+.active:hover {
+  cursor: pointer;
+}
