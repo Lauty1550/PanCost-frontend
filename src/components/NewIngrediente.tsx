@@ -2,15 +2,18 @@ import { useForm } from "react-hook-form";
 import "../css/Modal.css";
 import { useAppcontext } from "../hooks/useAppContext";
 import { useState } from "react";
+import type { CreateIngredienteDTO } from "../types/Ingrediente";
+import { ingredienteService } from "../services/ingrediente.service";
 export default function NewIngrediente() {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isDirty },
-  } = useForm();
+  } = useForm<CreateIngredienteDTO>();
   const [closing, setClosing] = useState(false);
-  const { setEnableModal, enableModal } = useAppcontext();
+  const { setEnableModal, enableModal, dispararFetch, setDispararFetch } =
+    useAppcontext();
 
   const handleClose = () => {
     setClosing(true);
@@ -21,13 +24,23 @@ export default function NewIngrediente() {
     }, 100);
   };
 
+  async function onSubmit(data: CreateIngredienteDTO) {
+    await ingredienteService.addNewIngrediente(data);
+    reset();
+    setDispararFetch(!dispararFetch);
+    handleClose();
+  }
+
   return (
     <div
       className={`modal-overlay ${enableModal ? "open" : "close"} ${
         closing ? "close" : ""
       }`}
     >
-      <form className={`modal ${enableModal ? "open" : "close"}`}>
+      <form
+        className={`modal ${enableModal ? "open" : "close"}`}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <h1 onClick={handleClose}>X</h1>
         <h2> Crear Ingrediente</h2>
 
@@ -36,17 +49,17 @@ export default function NewIngrediente() {
           <input
             type="text"
             id="nombreIngrediente"
-            {...register("nombreIngrediente", {
+            {...register("nombre", {
               required: true,
               maxLength: 25,
             })}
           />
 
-          {errors.nombreIngrediente?.type === "required" && (
+          {errors.nombre?.type === "required" && (
             <p className="text-error">El campo nombre es requerido</p>
           )}
 
-          {errors.nombreIngrediente?.type === "maxLength" && (
+          {errors.nombre?.type === "maxLength" && (
             <p className="text-error">Máximo 25 caracteres</p>
           )}
         </section>
@@ -57,6 +70,7 @@ export default function NewIngrediente() {
             id="precioCompra"
             type="number"
             {...register("precioCompra", {
+              valueAsNumber: true,
               required: true,
               max: 1000000,
             })}
@@ -76,17 +90,18 @@ export default function NewIngrediente() {
           <input
             id="cantCompra"
             type="number"
-            {...register("cantCompra", {
+            {...register("cantidadCompra", {
+              valueAsNumber: true,
               required: true,
               max: 1000000,
             })}
           />
 
-          {errors.cantCompra?.type === "required" && (
+          {errors.cantidadCompra?.type === "required" && (
             <p className="text-error">La cantidad es requerida</p>
           )}
 
-          {errors.cantCompra?.type === "max" && (
+          {errors.cantidadCompra?.type === "max" && (
             <p className="text-error">La cantidad no puede superar 1000000</p>
           )}
         </section>
@@ -111,7 +126,7 @@ export default function NewIngrediente() {
           )}
         </section>
 
-        <h2> CREAR</h2>
+        <button type="submit"> CREAR</button>
       </form>
     </div>
   );
