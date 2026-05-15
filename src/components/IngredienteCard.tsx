@@ -2,12 +2,16 @@ import type { Ingrediente } from "../types/Ingrediente";
 import "../css/IngredienteCard.css";
 import BalanzaIcon from "../assets/BalanzaIcon";
 import CofreIcon from "../assets/CofreIcon";
+import DotsIcon from "../assets/DotsIcon";
+import EtiquetaIcon from "../assets/EtiquetaIcon";
+import { useState } from "react";
 
 type Props = {
   ingrediente: Ingrediente;
 };
 
 export default function IngredienteCard({ ingrediente }: Props) {
+  const [dropdown, setDropdown] = useState(false);
   return (
     <article className="card">
       <header className="card-main">
@@ -15,15 +19,39 @@ export default function IngredienteCard({ ingrediente }: Props) {
 
         <section>
           <h2>{ingrediente.nombre}</h2>
-          <h3>${ingrediente.precioCompra}</h3>
+          <div className="precio">
+            <span className="icon-wrapper">
+              <EtiquetaIcon />
+            </span>
+            <div className="info-wrapper">
+              <p>Precio de compra</p>
+              <h4>${ingrediente.precioCompra}</h4>
+            </div>
+          </div>
         </section>
+
+        <span className="dots">
+          <span
+            className="dots-trigger"
+            onClick={() => {
+              setDropdown(!dropdown);
+            }}
+          >
+            <DotsIcon />
+          </span>
+
+          <div className={`dropdown ${dropdown ? "open" : "close"}`}>
+            <button>Editar</button>
+            <button>Eliminar</button>
+          </div>
+        </span>
       </header>
 
       <footer className="card-bottom">
         <section className="card-peso">
-          <div className="icon-wrapper">
+          <span className="icon-wrapper">
             <BalanzaIcon />
-          </div>
+          </span>
 
           <div className="info-wrapper">
             <p>Unidad de compra</p>
@@ -32,9 +60,9 @@ export default function IngredienteCard({ ingrediente }: Props) {
         </section>
 
         <section className="card-peso">
-          <div className="icon-wrapper">
+          <span className="icon-wrapper">
             <CofreIcon />
-          </div>
+          </span>
 
           <div className="info-wrapper">
             <p>Cantidad de compra</p>

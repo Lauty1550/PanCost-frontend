@@ -1,10 +1,11 @@
 .card {
   padding: 10px;
   border: 1px solid wheat;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 350px;
   box-sizing: border-box;
   user-select: none;
+  text-align: start;
 }
 
 .card img {
@@ -20,6 +21,9 @@
   display: flex;
   gap: 15px;
   padding: 10px;
+  justify-content: start;
+  align-items: start;
+  position: relative;
 }
 
 .card-bottom {
@@ -63,4 +67,67 @@
 .info-wrapper p,
 .info-wrapper h4 {
   margin: 0;
+}
+
+.dots {
+  position: absolute;
+  right: 0;
+  width: 30px;
+  height: 34px;
+}
+.dots-trigger {
+  position: absolute;
+  width: 30px;
+  height: auto;
+  right: 0;
+  cursor: pointer;
+}
+
+.dots-trigger:hover {
+  background-color: rgb(243, 234, 222);
+  border-radius: 10px;
+}
+
+.dropdown {
+  position: absolute;
+  z-index: 1;
+  right: 80%;
+  top: 80%;
+  background: rgb(255, 255, 255);
+  border: 1px solid black;
+  border-radius: 12px;
+  padding: 5px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+  width: 80px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.dropdown button {
+  background: none;
+  border: none;
+}
+
+.dropdown.open {
+  pointer-events: all;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.dropdown.close {
+  transform: scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.precio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

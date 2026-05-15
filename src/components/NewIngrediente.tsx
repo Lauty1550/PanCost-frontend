@@ -1,35 +1,16 @@
-import { useForm } from "react-hook-form";
+import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
-import { useAppcontext } from "../hooks/useAppContext";
-import { useState } from "react";
-import type { CreateIngredienteDTO } from "../types/Ingrediente";
-import { ingredienteService } from "../services/ingrediente.service";
+
 export default function NewIngrediente() {
   const {
-    register,
+    onSubmit,
+    enableModal,
+    closing,
+    errors,
+    handleClose,
     handleSubmit,
-    reset,
-    formState: { errors, isDirty },
-  } = useForm<CreateIngredienteDTO>();
-  const [closing, setClosing] = useState(false);
-  const { setEnableModal, enableModal, dispararFetch, setDispararFetch } =
-    useAppcontext();
-
-  const handleClose = () => {
-    setClosing(true);
-
-    setTimeout(() => {
-      setEnableModal(false);
-      setClosing(false);
-    }, 100);
-  };
-
-  async function onSubmit(data: CreateIngredienteDTO) {
-    await ingredienteService.addNewIngrediente(data);
-    reset();
-    setDispararFetch(!dispararFetch);
-    handleClose();
-  }
+    register,
+  } = useNewIngrediente();
 
   return (
     <div
