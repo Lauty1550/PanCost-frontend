@@ -7,18 +7,25 @@ type Props = {
 
 export default function AppProvider({ children }: Props) {
   const [selection, setSelection] = useState(0);
-  const [enableModal, setEnableModal] = useState(false);
-  const [dispararFetch, setDispararFetch] = useState(false);
+  const [enableModalIngrediente, setEnableModalIngrediente] = useState(false);
+  const [dispararFetchIngrediente, setDispararFetchIngrediente] =
+    useState(false);
+  const [enableModalReceta, setEnableModalReceta] = useState(false);
+  const [dispararFetchReceta, setDispararFetchReceta] = useState(false);
 
   return (
     <AppContext.Provider
       value={{
         selection,
         setSelection,
-        enableModal,
-        setEnableModal,
-        dispararFetch,
-        setDispararFetch,
+        enableModalIngrediente,
+        setEnableModalIngrediente,
+        dispararFetchIngrediente,
+        setDispararFetchIngrediente,
+        enableModalReceta,
+        setEnableModalReceta,
+        dispararFetchReceta,
+        setDispararFetchReceta,
       }}
     >
       {children}

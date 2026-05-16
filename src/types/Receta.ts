@@ -1,4 +1,7 @@
-import type { RecetaIngrediente } from "./RecetaIngrediente";
+import type {
+  CreateRecetaIngredienteDTO,
+  RecetaIngrediente,
+} from "./RecetaIngrediente";
 
 export interface Receta {
   id: number;
@@ -7,4 +10,7 @@ export interface Receta {
   ingredientes: RecetaIngrediente[];
 }
 
-export type CreateRecetaDTO = Omit<Receta, "id">;
+export interface CreateRecetaDTO {
+  nombre: string;
+  ingredientes: CreateRecetaIngredienteDTO[];
+}

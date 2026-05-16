@@ -1,25 +1,20 @@
 import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
+import { useAppcontext } from "../hooks/useAppContext";
 
 export default function NewIngrediente() {
-  const {
-    onSubmit,
-    enableModal,
-    closing,
-    errors,
-    handleClose,
-    handleSubmit,
-    register,
-  } = useNewIngrediente();
+  const { onSubmit, closing, errors, handleClose, handleSubmit, register } =
+    useNewIngrediente();
+  const { enableModalIngrediente } = useAppcontext();
 
   return (
     <div
-      className={`modal-overlay ${enableModal ? "open" : "close"} ${
+      className={`modal-overlay ${enableModalIngrediente ? "open" : "close"} ${
         closing ? "close" : ""
       }`}
     >
       <form
-        className={`modal ${enableModal ? "open" : "close"}`}
+        className={`modal ${enableModalIngrediente ? "open" : "close"}`}
         onSubmit={handleSubmit(onSubmit)}
       >
         <h1 onClick={handleClose}>X</h1>

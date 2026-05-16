@@ -9,4 +9,8 @@ export interface RecetaIngrediente {
   unidad: Unidad;
 }
 
-export type CreateRecetaIngredienteDTO = Omit<RecetaIngrediente, "id">;
+export interface CreateRecetaIngredienteDTO {
+  ingredienteId: number;
+  cantidadUsada: number;
+  unidad: Unidad;
+}

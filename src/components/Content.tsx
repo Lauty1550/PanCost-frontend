@@ -4,6 +4,7 @@ import Ingredientes from "./Ingredientes";
 import { useAppcontext } from "../hooks/useAppContext";
 import BotonAdd from "./BotonAdd";
 import NewIngrediente from "./NewIngrediente";
+import NewReceta from "./NewReceta";
 
 export default function Content() {
   const { selection } = useAppcontext();
@@ -13,7 +14,7 @@ export default function Content() {
       <section className="content">
         {selection === 0 ? <Recetas /> : <Ingredientes />}
       </section>
-
+      <NewReceta />
       <NewIngrediente />
     </main>
   );

@@ -4,12 +4,13 @@ import { useIngredienteContext } from "./useIngredienteContext";
 
 export default function useWarningDelete() {
   const { idIngrediente } = useIngredienteContext();
-  const { dispararFetch, setDispararFetch } = useAppcontext();
+  const { dispararFetchIngrediente, setDispararFetchIngrediente } =
+    useAppcontext();
 
   async function handleDelete() {
     try {
       await ingredienteService.deleteIngrediente(idIngrediente);
-      setDispararFetch(!dispararFetch);
+      setDispararFetchIngrediente(!dispararFetchIngrediente);
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       console.error("Error al eliminar ingrediente");

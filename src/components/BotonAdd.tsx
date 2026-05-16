@@ -2,17 +2,21 @@ import "../css/BotonAdd.css";
 import { useAppcontext } from "../hooks/useAppContext";
 
 export default function BotonAdd() {
-  const { selection, setEnableModal } = useAppcontext();
+  const { selection, setEnableModalIngrediente, setEnableModalReceta } =
+    useAppcontext();
   // eslint-disable-next-line prefer-const
   let tipo = selection === 0 ? "Receta" : "Ingrediente";
 
+  function openModal() {
+    if (selection === 0) {
+      setEnableModalReceta(true);
+    } else {
+      setEnableModalIngrediente(true);
+    }
+  }
+
   return (
-    <button
-      className="button-add"
-      onClick={() => {
-        setEnableModal(true);
-      }}
-    >
+    <button className="button-add" onClick={openModal}>
       Agregar {tipo}
     </button>
   );

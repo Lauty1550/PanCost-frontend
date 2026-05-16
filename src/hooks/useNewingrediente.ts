@@ -12,14 +12,17 @@ export default function useNewIngrediente() {
     formState: { errors },
   } = useForm<CreateIngredienteDTO>();
   const [closing, setClosing] = useState(false);
-  const { setEnableModal, enableModal, dispararFetch, setDispararFetch } =
-    useAppcontext();
+  const {
+    setEnableModalIngrediente,
+    dispararFetchIngrediente,
+    setDispararFetchIngrediente,
+  } = useAppcontext();
 
   const handleClose = () => {
     setClosing(true);
 
     setTimeout(() => {
-      setEnableModal(false);
+      setEnableModalIngrediente(false);
       setClosing(false);
     }, 100);
   };
@@ -27,13 +30,12 @@ export default function useNewIngrediente() {
   async function onSubmit(data: CreateIngredienteDTO) {
     await ingredienteService.addNewIngrediente(data);
     reset();
-    setDispararFetch(!dispararFetch);
+    setDispararFetchIngrediente(!dispararFetchIngrediente);
     handleClose();
   }
 
   return {
     onSubmit,
-    enableModal,
     handleClose,
     handleSubmit,
     closing,
