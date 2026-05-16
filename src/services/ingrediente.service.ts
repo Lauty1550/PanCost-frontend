@@ -33,4 +33,42 @@ export const ingredienteService = {
       console.error("Error al crear ingrediente: ", error);
     }
   },
+
+  async deleteIngrediente(id: number) {
+    try {
+      const resp = await fetch(`${API_URL}/borrar/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!resp.ok) {
+        throw new Error("Error al eliminar ingrediente");
+      }
+
+      return await resp.json();
+    } catch (error) {
+      console.error("Error al eliminar ingrediente:", error);
+      throw error;
+    }
+  },
+
+  async updateIngrediente(id: number, data: CreateIngredienteDTO) {
+    try {
+      const resp = await fetch(`${API_URL}/modificar/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!resp.ok) {
+        throw new Error("Error al actualizar ingrediente");
+      }
+
+      return await resp.json();
+    } catch (error) {
+      console.error("Error al actualizar ingrediente:", error);
+      throw error;
+    }
+  },
 };

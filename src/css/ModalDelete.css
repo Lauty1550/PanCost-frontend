@@ -1,0 +1,49 @@
+.modal-delete-overlay {
+  border: 1px solid black;
+  z-index: 1;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.modal-detele-overlay.open {
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: all;
+}
+
+.modal-delete-overlay.close {
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+.modal-delete {
+  width: 400px;
+  position: relative;
+  background-color: white;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.modal-delete.open {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.modal-delete.close {
+  transform: scale(0.9);
+  opacity: 0;
+}

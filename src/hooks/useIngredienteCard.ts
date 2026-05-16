@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 export default function useIngredienteCard() {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef<HTMLSpanElement | null>(null);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -21,5 +22,11 @@ export default function useIngredienteCard() {
     };
   }, []);
 
-  return { dropdown, setDropdown, dropdownRef };
+  return {
+    dropdown,
+    setDropdown,
+    dropdownRef,
+    deleteModal,
+    setDeleteModal,
+  };
 }

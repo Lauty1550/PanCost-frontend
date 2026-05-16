@@ -95,14 +95,13 @@
   top: 80%;
   background: rgb(255, 255, 255);
   border: 1px solid black;
-  border-radius: 12px;
-  padding: 5px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
-  gap: 5px;
   align-items: start;
-  width: 80px;
+  justify-content: center;
+  width: 100px;
+  height: 50px;
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
@@ -111,6 +110,13 @@
 .dropdown button {
   background: none;
   border: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.dropdown button:hover {
+  background-color: wheat;
 }
 
 .dropdown.open {

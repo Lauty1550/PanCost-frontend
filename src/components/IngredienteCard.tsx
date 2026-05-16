@@ -5,13 +5,18 @@ import CofreIcon from "../assets/CofreIcon";
 import DotsIcon from "../assets/DotsIcon";
 import EtiquetaIcon from "../assets/EtiquetaIcon";
 import useIngredienteCard from "../hooks/useIngredienteCard";
+import WarningDelete from "./WarningDelete";
+import "../css/ModalDelete.css";
+import { useIngredienteContext } from "../hooks/useIngredienteContext";
 
 type Props = {
   ingrediente: Ingrediente;
 };
 
 export default function IngredienteCard({ ingrediente }: Props) {
-  const { dropdown, setDropdown, dropdownRef } = useIngredienteCard();
+  const { dropdown, setDropdown, dropdownRef, deleteModal, setDeleteModal } =
+    useIngredienteCard();
+  const { setIdIngrediente } = useIngredienteContext();
 
   return (
     <article className="card">
@@ -43,7 +48,15 @@ export default function IngredienteCard({ ingrediente }: Props) {
 
           <div className={`dropdown ${dropdown ? "open" : "close"}`}>
             <button>Editar</button>
-            <button>Eliminar</button>
+            <button
+              onClick={() => {
+                setDeleteModal(true);
+                setIdIngrediente(ingrediente.id);
+                setDropdown(false);
+              }}
+            >
+              Eliminar
+            </button>
           </div>
         </span>
       </header>
@@ -71,6 +84,16 @@ export default function IngredienteCard({ ingrediente }: Props) {
           </div>
         </section>
       </footer>
+
+      <span
+        className={`modal-delete-overlay ${deleteModal ? "open" : "close"} `}
+      >
+        <WarningDelete
+          nombre={ingrediente.nombre}
+          deleteModal={deleteModal}
+          callBack={() => setDeleteModal(false)}
+        />
+      </span>
     </article>
   );
 }

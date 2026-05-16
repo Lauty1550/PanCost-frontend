@@ -6,7 +6,7 @@ import BotonAdd from "./BotonAdd";
 import NewIngrediente from "./NewIngrediente";
 
 export default function Content() {
-  const { selection, enableModal } = useAppcontext();
+  const { selection } = useAppcontext();
   return (
     <main className="content-container">
       <BotonAdd />
