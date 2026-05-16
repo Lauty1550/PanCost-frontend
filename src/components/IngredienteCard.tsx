@@ -4,14 +4,15 @@ import BalanzaIcon from "../assets/BalanzaIcon";
 import CofreIcon from "../assets/CofreIcon";
 import DotsIcon from "../assets/DotsIcon";
 import EtiquetaIcon from "../assets/EtiquetaIcon";
-import { useState } from "react";
+import useIngredienteCard from "../hooks/useIngredienteCard";
 
 type Props = {
   ingrediente: Ingrediente;
 };
 
 export default function IngredienteCard({ ingrediente }: Props) {
-  const [dropdown, setDropdown] = useState(false);
+  const { dropdown, setDropdown, dropdownRef } = useIngredienteCard();
+
   return (
     <article className="card">
       <header className="card-main">
@@ -30,7 +31,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
           </div>
         </section>
 
-        <span className="dots">
+        <span className="dots" ref={dropdownRef}>
           <span
             className="dots-trigger"
             onClick={() => {
