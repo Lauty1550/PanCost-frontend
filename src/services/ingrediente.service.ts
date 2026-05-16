@@ -7,7 +7,7 @@ export const ingredienteService = {
     const resp = await fetch(`${API_URL}`);
 
     if (!resp.ok) {
-      throw new Error("Error al obtener precios");
+      throw new Error("Error al obtener ingredientes");
     }
 
     return await resp.json();
