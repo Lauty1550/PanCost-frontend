@@ -1,3 +1,4 @@
+import useCalcularPrecios from "../hooks/useCalcularPrecios";
 import type { Receta } from "../types/Receta";
 
 type Props = {
@@ -5,6 +6,9 @@ type Props = {
 };
 
 export default function RecetaCard({ receta }: Props) {
+  const { calcularPrecioUsado, calcularTotalReceta } = useCalcularPrecios();
+  const total = calcularTotalReceta(receta.ingredientes);
+
   return (
     <article className="card">
       <header>
@@ -16,13 +20,24 @@ export default function RecetaCard({ receta }: Props) {
             <li key={i.id}>
               <h4>{i.ingrediente.nombre}</h4>
               <p>
-                Cantidad: {i.cantidadUsada} {i.unidad}
+                Cantidad utilizada: {i.cantidadUsada} {i.unidad}
               </p>
-              <p>Valor: ${i.ingrediente.precioCompra}</p>
+
+              <p>
+                Costo del ingrediente: $
+                {calcularPrecioUsado(
+                  i.ingrediente.id,
+                  i.cantidadUsada,
+                  i.unidad,
+                )}
+              </p>
             </li>
           ))}
         </ul>
       </header>
+      <footer>
+        <h4>Costo total de la receta: ${total}</h4>
+      </footer>
     </article>
   );
 }

@@ -9,6 +9,7 @@ export default function useIngredientes() {
 
   useEffect(() => {
     getIngredientes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispararFetchIngrediente]);
 
   async function getIngredientes() {
