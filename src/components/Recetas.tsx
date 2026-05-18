@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import type { Receta } from "../types/Receta";
 import { RecetaService } from "../services/Receta.service";
+import RecetaCard from "./RecetaCard";
 
 export default function Recetas() {
   const [listaRecetas, setListaRecetas] = useState<Receta[]>([]);
-
-  console.log(listaRecetas);
 
   useEffect(() => {
     getRecetas();
@@ -16,5 +15,5 @@ export default function Recetas() {
     setListaRecetas(resp);
   }
 
-  return <h1> Recetas</h1>;
+  return listaRecetas.map((r) => <RecetaCard key={r.id} receta={r} />);
 }
