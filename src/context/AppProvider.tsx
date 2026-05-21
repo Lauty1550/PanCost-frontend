@@ -12,6 +12,7 @@ export default function AppProvider({ children }: Props) {
     useState(false);
   const [enableModalReceta, setEnableModalReceta] = useState(false);
   const [dispararFetchReceta, setDispararFetchReceta] = useState(false);
+  const [query, setQuery] = useState("");
 
   return (
     <AppContext.Provider
@@ -26,6 +27,8 @@ export default function AppProvider({ children }: Props) {
         setEnableModalReceta,
         dispararFetchReceta,
         setDispararFetchReceta,
+        query,
+        setQuery,
       }}
     >
       {children}
