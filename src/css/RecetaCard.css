@@ -1,0 +1,86 @@
+.card-receta {
+  padding: 15px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  width: 350px;
+  box-sizing: border-box;
+  user-select: none;
+  text-align: start;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-receta img {
+  width: 100%;
+  height: auto;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.card-receta hr {
+  border: none;
+  height: 1px;
+  background-color: rgb(238, 234, 231);
+}
+
+.card-receta-footer {
+  border: 1px solid wheat;
+  border-radius: 5px;
+  background-color: rgba(249, 243, 234);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.card-receta-footer h4 {
+  padding: 10px;
+  margin: 0;
+  color: rgb(95, 76, 56);
+}
+
+.total-receta {
+  color: black;
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+
+.tabla-receta {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.tabla-receta th {
+  padding: 12px;
+  text-align: left;
+  color: rgba(113, 98, 83);
+}
+
+.tabla-receta td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+  color: rgba(92, 79, 71);
+}
+
+.tabla-receta tbody tr:hover {
+  background-color: #faf7f2;
+  transition: background-color 0.2s ease;
+}
+
+.tabla-receta tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table-costo {
+  color: black !important;
+}

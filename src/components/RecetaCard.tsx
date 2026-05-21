@@ -1,5 +1,6 @@
 import useCalcularPrecios from "../hooks/useCalcularPrecios";
 import type { Receta } from "../types/Receta";
+import "../css/RecetaCard.css";
 
 type Props = {
   receta: Receta;
@@ -10,33 +11,45 @@ export default function RecetaCard({ receta }: Props) {
   const total = calcularTotalReceta(receta.ingredientes);
 
   return (
-    <article className="card">
+    <article className="card-receta">
       <header>
         <img src="/azucar.jpg" alt={receta.nombre} />
         <h2>{receta.nombre}</h2>
 
-        <ul>
-          {receta.ingredientes.map((i) => (
-            <li key={i.id}>
-              <h4>{i.ingrediente.nombre}</h4>
-              <p>
-                Cantidad utilizada: {i.cantidadUsada} {i.unidad}
-              </p>
+        <hr />
 
-              <p>
-                Costo del ingrediente: $
-                {calcularPrecioUsado(
-                  i.ingrediente.id,
-                  i.cantidadUsada,
-                  i.unidad,
-                )}
-              </p>
-            </li>
-          ))}
-        </ul>
+        <table className="tabla-receta">
+          <thead>
+            <tr>
+              <th>Ingrediente</th>
+              <th>Cantidad usada</th>
+              <th>Costo</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {receta.ingredientes.map((i) => (
+              <tr key={i.id}>
+                <td>{i.ingrediente.nombre}</td>
+                <td>
+                  {i.cantidadUsada} {i.unidad}
+                </td>
+                <td className="table-costo">
+                  $
+                  {calcularPrecioUsado(
+                    i.ingrediente.id,
+                    i.cantidadUsada,
+                    i.unidad,
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </header>
-      <footer>
-        <h4>Costo total de la receta: ${total}</h4>
+      <footer className="card-receta-footer">
+        <h4>Costo total de la receta:</h4>
+        <span className="total-receta">${total}</span>
       </footer>
     </article>
   );

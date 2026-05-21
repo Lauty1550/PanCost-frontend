@@ -1,11 +1,13 @@
 .card {
   padding: 10px;
-  border: 1px solid wheat;
+  border: 1px solid transparent;
   border-radius: 10px;
   width: 350px;
   box-sizing: border-box;
   user-select: none;
   text-align: start;
+  background-color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .card img {
