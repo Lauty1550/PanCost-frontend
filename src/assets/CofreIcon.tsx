@@ -1,4 +1,8 @@
-function CofreIcon() {
+type Props = {
+  color: string;
+};
+
+function CofreIcon({ color }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12,39 +16,39 @@ function CofreIcon() {
       <g>
         <path
           d="M32 61a2 2 0 0 1-2-2V29a2 2 0 0 1 4 0v27.333L54 50.5V36a2 2 0 0 1 4 0v16a2 2 0 0 1-1.44 1.92l-24 7A1.985 1.985 0 0 1 32 61Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
         <path
           d="M40 42a2 2 0 0 1-1.617-.824l-8-11a2 2 0 0 1 1.067-3.1l21-6a2 2 0 0 1 2.238.849l7 11a2 2 0 0 1-1.114 2.99l-20 6A1.989 1.989 0 0 1 40 42Zm-4.7-11.863 5.483 7.54 16.111-4.833-4.78-7.511Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
         <path
           d="M32 61a1.99 1.99 0 0 1-.56-.08l-24-7A2 2 0 0 1 6 52V36a2 2 0 0 1 4 0v14.5l20 5.833V29a2 2 0 0 1 4 0v30a2 2 0 0 1-2 2Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
         <path
           d="M24 42a1.989 1.989 0 0 1-.574-.084l-20-6a2 2 0 0 1-1.113-2.99l7-11a2 2 0 0 1 2.237-.849l21 6a2 2 0 0 1 1.067 3.1l-8 11A2 2 0 0 1 24 42ZM7.106 32.844l16.111 4.833 5.483-7.54-16.814-4.8ZM53 25a1.986 1.986 0 0 1-.551-.077l-10.5-3a2 2 0 0 1 1.1-3.846l10.5 3A2 2 0 0 1 53 25Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
         <path
           d="M11 25a2 2 0 0 1-.549-3.923l10.5-3a2 2 0 0 1 1.1 3.846l-10.5 3A1.986 1.986 0 0 1 11 25ZM32 21a2 2 0 0 1-2-2V5a2 2 0 0 1 4 0v14a2 2 0 0 1-2 2Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
         <path
           d="M32 21a1.992 1.992 0 0 1-1.414-.586l-6-6a2 2 0 0 1 2.828-2.828L32 16.171l4.586-4.585a2 2 0 1 1 2.828 2.828l-6 6A1.992 1.992 0 0 1 32 21Z"
-          fill="#000000"
+          fill={color}
           opacity="1"
-          data-original="#000000"
+          data-original={color}
         ></path>
       </g>
     </svg>

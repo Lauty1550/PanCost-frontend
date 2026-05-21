@@ -11,12 +11,18 @@
 }
 
 .card img {
-  width: 150px;
+  width: 130px;
   height: auto;
   border: 1px solid transparent;
   border-radius: 10px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+}
+
+.divider-horizontal {
+  border: none;
+  height: 1px;
+  background-color: rgb(238, 234, 231);
 }
 
 .card-main {
@@ -44,8 +50,12 @@
 }
 
 .icon-wrapper {
-  width: 30px;
-  height: 30px;
+  min-width: 25px;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(243, 234, 222);
+  border-radius: 5px;
+  padding: 3px;
 }
 
 .info-wrapper {
@@ -56,6 +66,13 @@
   align-items: start;
   text-align: left;
   padding: 5px;
+}
+
+.info-wrapper p {
+  max-width: 130px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .info-wrapper p {
@@ -138,4 +155,12 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+}
+
+.divider-vertical {
+  width: 1px;
+  height: 40px;
+  background-color: #ddd;
+  border: none;
+  margin: 0 12px;
 }

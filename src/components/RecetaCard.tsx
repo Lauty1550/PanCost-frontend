@@ -1,6 +1,8 @@
 import useCalcularPrecios from "../hooks/useCalcularPrecios";
 import type { Receta } from "../types/Receta";
 import "../css/RecetaCard.css";
+import { useState } from "react";
+import DetallesIcon from "../assets/DetallesIcon";
 
 type Props = {
   receta: Receta;
@@ -9,6 +11,14 @@ type Props = {
 export default function RecetaCard({ receta }: Props) {
   const { calcularPrecioUsado, calcularTotalReceta } = useCalcularPrecios();
   const total = calcularTotalReceta(receta.ingredientes);
+  const [expandido, setExpandido] = useState(false);
+  const cantMostrar = 3;
+  const masDeTresIngredientes = receta.ingredientes.length > cantMostrar;
+  const restantes = receta.ingredientes.length - cantMostrar;
+
+  const ingredientesAMostrar = expandido
+    ? receta.ingredientes
+    : receta.ingredientes.slice(0, cantMostrar);
 
   return (
     <article className="card-receta">
@@ -21,16 +31,19 @@ export default function RecetaCard({ receta }: Props) {
         <table className="tabla-receta">
           <thead>
             <tr>
-              <th>Ingrediente</th>
-              <th>Cantidad usada</th>
+              <th colSpan={2}>Ingrediente</th>
+              <th>Cant usada</th>
               <th>Costo</th>
             </tr>
           </thead>
 
           <tbody>
-            {receta.ingredientes.map((i) => (
+            {ingredientesAMostrar.map((i) => (
               <tr key={i.id}>
-                <td>{i.ingrediente.nombre}</td>
+                <td className="td-image">
+                  <img src="/azucar.jpg" />
+                </td>
+                <td className="td-nombre">{i.ingrediente.nombre}</td>
                 <td>
                   {i.cantidadUsada} {i.unidad}
                 </td>
@@ -46,10 +59,36 @@ export default function RecetaCard({ receta }: Props) {
             ))}
           </tbody>
         </table>
+        {masDeTresIngredientes && !expandido && (
+          <span
+            className="expandir"
+            onClick={() => {
+              setExpandido(true);
+            }}
+          >
+            +{restantes} ingrediente(s) más
+          </span>
+        )}
+
+        {masDeTresIngredientes && expandido && (
+          <span
+            className="expandir"
+            onClick={() => {
+              setExpandido(false);
+            }}
+          >
+            mostrar menos
+          </span>
+        )}
       </header>
       <footer className="card-receta-footer">
-        <h4>Costo total de la receta:</h4>
-        <span className="total-receta">${total}</span>
+        <div className="total-receta">
+          <h4>Costo total de la receta:</h4>
+          <span className="total-numero">${total}</span>
+        </div>
+        <button className="detalles-boton">
+          <DetallesIcon /> Ver detalles
+        </button>
       </footer>
     </article>
   );

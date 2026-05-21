@@ -17,6 +17,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
   const { dropdown, setDropdown, dropdownRef, deleteModal, setDeleteModal } =
     useIngredienteCard();
   const { setIdIngrediente } = useIngredienteContext();
+  const iconColor = "rgba(151, 124, 83)";
 
   return (
     <article className="card">
@@ -27,7 +28,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
           <h2>{ingrediente.nombre}</h2>
           <div className="precio">
             <span className="icon-wrapper">
-              <EtiquetaIcon />
+              <EtiquetaIcon color={iconColor} />
             </span>
             <div className="info-wrapper">
               <p>Precio de compra</p>
@@ -61,25 +62,29 @@ export default function IngredienteCard({ ingrediente }: Props) {
         </span>
       </header>
 
+      <hr className="divider-horizontal" />
+
       <footer className="card-bottom">
         <section className="card-peso">
           <span className="icon-wrapper">
-            <BalanzaIcon />
+            <BalanzaIcon color={iconColor} />
           </span>
 
           <div className="info-wrapper">
-            <p>Unidad de compra</p>
+            <p>Unidad</p>
             <h4> {ingrediente.unidadCompra}</h4>
           </div>
         </section>
 
+        <hr className="divider-vertical" />
+
         <section className="card-peso">
           <span className="icon-wrapper">
-            <CofreIcon />
+            <CofreIcon color={iconColor} />
           </span>
 
           <div className="info-wrapper">
-            <p>Cantidad de compra</p>
+            <p>Cantidad</p>
             <h4> {ingrediente.cantidadCompra}</h4>
           </div>
         </section>
