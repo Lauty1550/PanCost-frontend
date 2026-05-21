@@ -5,28 +5,11 @@ import { useAppcontext } from "../hooks/useAppContext";
 import BotonAdd from "./BotonAdd";
 import NewIngrediente from "./NewIngrediente";
 import NewReceta from "./NewReceta";
-import { useMemo, useState } from "react";
-import debounce from "just-debounce-it";
+import useContent from "../hooks/useContent";
 
 export default function Content() {
-  const { selection, setQuery } = useAppcontext();
-  const [input, setInput] = useState("");
-
-  const debouncedSetQuery = useMemo(
-    () =>
-      debounce((value: string) => {
-        setQuery(value);
-      }, 300),
-    [setQuery],
-  );
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
-    if (value === " " && input === "") return;
-
-    setInput(value);
-    debouncedSetQuery(value);
-  }
+  const { selection } = useAppcontext();
+  const { input, handleChange } = useContent();
 
   return (
     <main className="content-container">
