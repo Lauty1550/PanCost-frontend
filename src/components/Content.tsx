@@ -6,17 +6,27 @@ import BotonAdd from "./BotonAdd";
 import NewIngrediente from "./NewIngrediente";
 import NewReceta from "./NewReceta";
 import useContent from "../hooks/useContent";
+import { FiSearch } from "react-icons/fi";
 
 export default function Content() {
   const { selection } = useAppcontext();
-  const { input, handleChange } = useContent();
+  const { input, handleChange, onSubmit, inputRef, focusInput } = useContent();
 
   return (
     <main className="content-container">
       <BotonAdd />
-      <form>
-        <label htmlFor="filtro">Buscar</label>
-        <input id="filtro" type="text" value={input} onChange={handleChange} />
+      <form className="search" onSubmit={onSubmit}>
+        <div className="search-input">
+          <FiSearch className="search-icon" onClick={focusInput} />
+          <input
+            ref={inputRef}
+            id="filtro"
+            type="text"
+            value={input}
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </div>
       </form>
       <section className="content">
         {selection === 0 ? <Recetas /> : <Ingredientes />}
