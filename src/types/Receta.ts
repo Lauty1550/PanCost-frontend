@@ -6,8 +6,8 @@ import type {
 export interface Receta {
   id: number;
   nombre: string;
-  urlImagen: string;
 
+  urlImagen: string;
   ingredientes: RecetaIngrediente[];
 }
 

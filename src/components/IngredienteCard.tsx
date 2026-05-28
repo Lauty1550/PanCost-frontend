@@ -22,7 +22,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
   return (
     <article className="card">
       <header className="card-main">
-        <img src="/azucar.jpg" alt={ingrediente.nombre} />
+        <img src={ingrediente.urlImagen} alt={ingrediente.nombre} />
 
         <section>
           <h2>{ingrediente.nombre}</h2>

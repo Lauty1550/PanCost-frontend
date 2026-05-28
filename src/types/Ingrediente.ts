@@ -9,4 +9,6 @@ export interface Ingrediente {
   urlImagen: string;
 }
 
-export type CreateIngredienteDTO = Omit<Ingrediente, "id">;
+export type CreateIngredienteDTO = Omit<Ingrediente, "id" | "urlImagen"> & {
+  imagen: FileList;
+};

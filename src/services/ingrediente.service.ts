@@ -15,12 +15,23 @@ export const ingredienteService = {
 
   async addNewIngrediente(data: CreateIngredienteDTO) {
     try {
+      const formData = new FormData();
+
+      formData.append("nombre", data.nombre);
+
+      formData.append("precioCompra", data.precioCompra.toString());
+
+      formData.append("cantidadCompra", data.cantidadCompra.toString());
+
+      formData.append("unidadCompra", data.unidadCompra);
+
+      if (data.imagen?.[0]) {
+        formData.append("imagen", data.imagen[0]);
+      }
+
       const resp = await fetch(`${API_URL}/crear`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (!resp.ok) {
@@ -40,14 +51,17 @@ export const ingredienteService = {
         method: "DELETE",
       });
 
+      const data = await resp.json();
+
       if (!resp.ok) {
-        throw new Error("Error al eliminar ingrediente");
+        throw new Error(data.message);
       }
 
-      return await resp.json();
+      return data;
     } catch (error) {
-      console.error("Error al eliminar ingrediente:", error);
-      throw error;
+      if (error instanceof Error) {
+        alert(error.message);
+      }
     }
   },
 

@@ -41,7 +41,7 @@ export default function RecetaCard({ receta }: Props) {
             {ingredientesAMostrar.map((i) => (
               <tr key={i.id}>
                 <td className="td-image">
-                  <img src="/azucar.jpg" />
+                  <img src={i.ingrediente.urlImagen} />
                 </td>
                 <td className="td-nombre">{i.ingrediente.nombre}</td>
                 <td>

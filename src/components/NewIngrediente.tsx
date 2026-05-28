@@ -102,6 +102,17 @@ export default function NewIngrediente() {
           )}
         </section>
 
+        <section>
+          <label htmlFor="imagen">Imagen </label>
+
+          <input
+            id="imagen"
+            type="file"
+            accept="image/*"
+            {...register("imagen")}
+          />
+        </section>
+
         <button type="submit"> CREAR</button>
       </form>
     </div>
