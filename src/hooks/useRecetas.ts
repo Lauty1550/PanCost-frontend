@@ -5,14 +5,14 @@ import { useAppcontext } from "../hooks/useAppContext";
 
 export default function useRecetas() {
   const [listaRecetas, setListaRecetas] = useState<Receta[]>([]);
-  const { query } = useAppcontext();
+  const { query, dispararFetchReceta } = useAppcontext();
   const recetasFilter = listaRecetas.filter((r) =>
     r.nombre.toLowerCase().includes(query.toLowerCase()),
   );
 
   useEffect(() => {
     getRecetas();
-  }, []);
+  }, [dispararFetchReceta]);
 
   async function getRecetas() {
     const resp = await RecetaService.getAllRecetas();
