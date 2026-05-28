@@ -1,5 +1,5 @@
 .card-receta {
-  padding: 15px;
+  padding: 10px;
   border: 1px solid transparent;
   border-radius: 10px;
   width: 350px;
@@ -40,6 +40,21 @@
   gap: 8px;
   margin-top: 15px;
   width: 300px;
+}
+
+.card-receta-main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.dots-receta {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 34px;
 }
 
 .total-receta {
@@ -84,7 +99,6 @@
 .tabla-receta {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
   font-size: 0.95rem;
 }
 

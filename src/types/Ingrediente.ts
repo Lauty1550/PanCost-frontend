@@ -6,6 +6,7 @@ export interface Ingrediente {
   precioCompra: number;
   cantidadCompra: number;
   unidadCompra: Unidad;
+  urlImagen: string;
 }
 
 export type CreateIngredienteDTO = Omit<Ingrediente, "id">;

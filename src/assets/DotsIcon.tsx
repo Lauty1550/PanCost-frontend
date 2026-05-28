@@ -1,4 +1,8 @@
-function DotsIcon() {
+type Props = {
+  color: string;
+};
+
+function DotsIcon({ color }: Props) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +18,7 @@ function DotsIcon() {
           cx="256"
           cy="256"
           r="48"
-          fill="#000000"
+          fill={color}
           opacity="1"
           data-original="#000000"
         ></circle>
@@ -22,7 +26,7 @@ function DotsIcon() {
           cx="256"
           cy="416"
           r="48"
-          fill="#000000"
+          fill={color}
           opacity="1"
           data-original="#000000"
         ></circle>
@@ -30,7 +34,7 @@ function DotsIcon() {
           cx="256"
           cy="96"
           r="48"
-          fill="#000000"
+          fill={color}
           opacity="1"
           data-original="#000000"
         ></circle>

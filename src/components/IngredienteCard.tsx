@@ -44,7 +44,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
               setDropdown(!dropdown);
             }}
           >
-            <DotsIcon />
+            <DotsIcon color="#968585" />
           </span>
 
           <div className={`dropdown ${dropdown ? "open" : "close"}`}>
