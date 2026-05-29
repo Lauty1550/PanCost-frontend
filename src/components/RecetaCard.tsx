@@ -23,7 +23,7 @@ export default function RecetaCard({ receta }: Props) {
   return (
     <article className="card-receta">
       <header>
-        <img src="/azucar.jpg" alt={receta.nombre} />
+        <img src={receta.urlImagen} alt={receta.nombre} />
         <h2>{receta.nombre}</h2>
 
         <hr />

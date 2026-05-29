@@ -13,6 +13,6 @@ export interface Receta {
 
 export interface CreateRecetaDTO {
   nombre: string;
-  urlImagen: string;
+  imagen: FileList;
   ingredientes: CreateRecetaIngredienteDTO[];
 }

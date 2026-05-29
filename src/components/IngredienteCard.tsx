@@ -48,8 +48,9 @@ export default function IngredienteCard({ ingrediente }: Props) {
           </span>
 
           <div className={`dropdown ${dropdown ? "open" : "close"}`}>
-            <button>Editar</button>
+            <button className="dropdown-edit-btn">Editar</button>
             <button
+              className="dropdown-delete-btn"
               onClick={() => {
                 setDeleteModal(true);
                 setIdIngrediente(ingrediente.id);

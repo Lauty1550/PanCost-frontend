@@ -14,12 +14,19 @@ export const RecetaService = {
 
   async addNewReceta(data: CreateRecetaDTO) {
     try {
+      const formData = new FormData();
+
+      formData.append("nombre", data.nombre);
+
+      formData.append("ingredientes", JSON.stringify(data.ingredientes));
+
+      if (data.imagen?.[0]) {
+        formData.append("imagen", data.imagen[0]);
+      }
+
       const resp = await fetch(`${API_URL}/crear`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (!resp.ok) {

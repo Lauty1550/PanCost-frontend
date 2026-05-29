@@ -59,6 +59,17 @@ export default function NewReceta() {
           )}
         </section>
 
+        <section>
+          <label htmlFor="imagen">Imagen </label>
+
+          <input
+            id="imagen"
+            type="file"
+            accept="image/*"
+            {...register("imagen")}
+          />
+        </section>
+
         {/* Ingredientes */}
         <section className="ingredients-section">
           <h3 className="section-title">Ingredientes</h3>
