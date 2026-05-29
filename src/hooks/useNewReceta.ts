@@ -35,6 +35,8 @@ export default function useNewReceta() {
   const { setEnableModalReceta, setDispararFetchReceta, dispararFetchReceta } =
     useAppcontext();
 
+  const [isLoading, setIsloading] = useState(false);
+
   useIngredientes();
 
   const handleClose = () => {
@@ -47,10 +49,18 @@ export default function useNewReceta() {
   };
 
   async function onSubmit(data: CreateRecetaDTO) {
-    await RecetaService.addNewReceta(data);
-    setDispararFetchReceta(!dispararFetchReceta);
-    reset();
-    handleClose();
+    try {
+      setIsloading(true);
+
+      await RecetaService.addNewReceta(data);
+      setDispararFetchReceta(!dispararFetchReceta);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsloading(false);
+      reset();
+      handleClose();
+    }
   }
 
   return {
@@ -65,5 +75,6 @@ export default function useNewReceta() {
     fields,
     append,
     remove,
+    isLoading,
   };
 }

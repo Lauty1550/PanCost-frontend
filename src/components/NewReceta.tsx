@@ -19,6 +19,7 @@ export default function NewReceta() {
     fields,
     append,
     remove,
+    isLoading,
   } = useNewReceta();
 
   return (
@@ -31,7 +32,12 @@ export default function NewReceta() {
         className={`modal ${enableModalReceta ? "open" : "close"}`}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <button type="button" className="modal-close" onClick={handleClose}>
+        <button
+          type="button"
+          className="modal-close"
+          onClick={handleClose}
+          disabled={isLoading}
+        >
           ✕
         </button>
         <h2> Crear Receta</h2>
@@ -48,6 +54,7 @@ export default function NewReceta() {
               maxLength: 25,
             })}
             autoComplete="off"
+            disabled={isLoading}
           />
 
           {touchedFields.nombre && errors.nombre?.type === "required" && (
@@ -59,14 +66,17 @@ export default function NewReceta() {
           )}
         </section>
 
-        <section>
-          <label htmlFor="imagen">Imagen </label>
+        <section className="form-section">
+          <label className="form-label" htmlFor="imagen">
+            Imagen{" "}
+          </label>
 
           <input
             id="imagen"
             type="file"
             accept="image/*"
             {...register("imagen")}
+            disabled={isLoading}
           />
         </section>
 
@@ -85,6 +95,7 @@ export default function NewReceta() {
                     valueAsNumber: true,
                     validate: (value) => value !== 0,
                   })}
+                  disabled={isLoading}
                 >
                   <option value={0}>Seleccione ingrediente</option>
 
@@ -113,6 +124,7 @@ export default function NewReceta() {
                     valueAsNumber: true,
                     validate: (value) => value > 0,
                   })}
+                  disabled={isLoading}
                 />
                 {errors.ingredientes?.[index]?.cantidadUsada?.type ===
                   "validate" && <p className="text-error">No puede ser 0</p>}
@@ -124,6 +136,7 @@ export default function NewReceta() {
                   {...register(`ingredientes.${index}.unidad`, {
                     required: true,
                   })}
+                  disabled={isLoading}
                 >
                   <option value="">Medida</option>
 
@@ -143,6 +156,7 @@ export default function NewReceta() {
                 className="remove-btn"
                 type="button"
                 onClick={() => remove(index)}
+                disabled={isLoading}
               >
                 Eliminar
               </button>
@@ -160,13 +174,20 @@ export default function NewReceta() {
                 unidad: "g",
               })
             }
+            disabled={isLoading}
           >
             Agregar ingrediente
           </button>
         </section>
 
         <div className="form-actions">
-          <button type="submit">Guardar receta</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <img className="loading-gif" src="/loading.gif" alt="cargando" />
+            ) : (
+              "Guardar receta"
+            )}
+          </button>
         </div>
       </form>
     </div>

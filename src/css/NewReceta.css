@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
+  padding: 5px 0;
 }
 
 .form-label {
@@ -58,6 +59,12 @@ select:focus {
   box-shadow: 0 0 0 4px rgba(189, 160, 138, 0.12);
 }
 
+input:disabled,
+select:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
 /* INGREDIENT CARD */
 
 .ingrediente-item {
@@ -97,6 +104,11 @@ button {
 
 button[type="submit"] {
   height: 52px;
+  width: 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border-radius: 1rem;
 
@@ -115,6 +127,11 @@ button[type="submit"]:hover {
   transform: translateY(-1px);
 
   background: #9c6f4e;
+}
+
+button[type="submit"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
 .section-title {
@@ -149,6 +166,11 @@ button[type="submit"]:hover {
   background: #e6d8ca;
 }
 
+.add-ingredient-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
 /* REMOVE */
 
 .remove-btn {
@@ -170,6 +192,11 @@ button[type="submit"]:hover {
   cursor: pointer;
 
   background: #f8ddd9;
+}
+
+.remove-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
 /* ERROR */
@@ -196,4 +223,38 @@ button[type="submit"]:hover {
 
 .modal::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.loading-gif {
+  width: 80px;
+  display: block;
+}
+
+input[type="file"] {
+  padding: 0.6rem;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  border: none;
+
+  padding: 0.6rem 1rem;
+
+  margin-right: 1rem;
+
+  border-radius: 0.8rem;
+
+  background: #efe6dd;
+  color: #6b4f3a;
+
+  font-family: inherit;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.18s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background: #e6d8ca;
 }
