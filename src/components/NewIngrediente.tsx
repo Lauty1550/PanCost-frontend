@@ -1,10 +1,18 @@
 import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
 import { useAppcontext } from "../hooks/useAppContext";
+import "../css/newIngrediente.css";
 
 export default function NewIngrediente() {
-  const { onSubmit, closing, errors, handleClose, handleSubmit, register } =
-    useNewIngrediente();
+  const {
+    onSubmit,
+    closing,
+    errors,
+    handleClose,
+    handleSubmit,
+    register,
+    isLoading,
+  } = useNewIngrediente();
   const { enableModalIngrediente } = useAppcontext();
 
   return (
@@ -17,11 +25,20 @@ export default function NewIngrediente() {
         className={`modal ${enableModalIngrediente ? "open" : "close"}`}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 onClick={handleClose}>X</h1>
+        <button
+          type="button"
+          className="modal-close"
+          onClick={handleClose}
+          disabled={isLoading}
+        >
+          ✕
+        </button>
         <h2> Crear Ingrediente</h2>
 
         <section className="form-section">
-          <label htmlFor="nombreIngrediente"> Nombre ingrediente</label>
+          <label className="form-label" htmlFor="nombreIngrediente">
+            Nombre ingrediente
+          </label>
           <input
             type="text"
             id="nombreIngrediente"
@@ -29,6 +46,7 @@ export default function NewIngrediente() {
               required: true,
               maxLength: 25,
             })}
+            disabled={isLoading}
           />
 
           {errors.nombre?.type === "required" && (
@@ -41,7 +59,9 @@ export default function NewIngrediente() {
         </section>
 
         <section className="form-section">
-          <label htmlFor="precioCompra">$Precio</label>
+          <label className="form-label" htmlFor="precioCompra">
+            $Precio
+          </label>
           <input
             id="precioCompra"
             type="number"
@@ -50,6 +70,7 @@ export default function NewIngrediente() {
               required: true,
               max: 1000000,
             })}
+            disabled={isLoading}
           />
 
           {errors.precioCompra?.type === "required" && (
@@ -62,7 +83,9 @@ export default function NewIngrediente() {
         </section>
 
         <section className="form-section">
-          <label htmlFor="cantCompra">Cantidad</label>
+          <label className="form-label" htmlFor="cantCompra">
+            Cantidad
+          </label>
           <input
             id="cantCompra"
             type="number"
@@ -71,6 +94,7 @@ export default function NewIngrediente() {
               required: true,
               max: 1000000,
             })}
+            disabled={isLoading}
           />
 
           {errors.cantidadCompra?.type === "required" && (
@@ -83,12 +107,15 @@ export default function NewIngrediente() {
         </section>
 
         <section className="form-section">
-          <label htmlFor="unidadCompra"> Unidad de compra</label>
+          <label className="form-label" htmlFor="unidadCompra">
+            Unidad de compra
+          </label>
           <select
             id="unidadCompra"
             {...register("unidadCompra", {
               required: true,
             })}
+            disabled={isLoading}
           >
             <option value="g">Gramos</option>
             <option value="kg">Kilo</option>
@@ -102,18 +129,37 @@ export default function NewIngrediente() {
           )}
         </section>
 
-        <section>
-          <label htmlFor="imagen">Imagen </label>
+        <section className="form-section">
+          <label
+            className="form-label"
+            htmlFor={isLoading ? undefined : "imagen"}
+          >
+            Imagen
+          </label>
 
           <input
             id="imagen"
             type="file"
             accept="image/*"
             {...register("imagen")}
+            disabled={isLoading}
           />
         </section>
 
-        <button type="submit"> CREAR</button>
+        <div className="form-actions">
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <img
+                className="loading-gif"
+                src="/loading.gif"
+                alt="cargando"
+                draggable={false}
+              />
+            ) : (
+              "Guardar ingrediente"
+            )}
+          </button>
+        </div>
       </form>
     </div>
   );

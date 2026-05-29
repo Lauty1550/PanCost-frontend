@@ -183,7 +183,12 @@ export default function NewReceta() {
         <div className="form-actions">
           <button type="submit" disabled={isLoading}>
             {isLoading ? (
-              <img className="loading-gif" src="/loading.gif" alt="cargando" />
+              <img
+                className="loading-gif"
+                src="/loading.gif"
+                alt="cargando"
+                draggable={false}
+              />
             ) : (
               "Guardar receta"
             )}

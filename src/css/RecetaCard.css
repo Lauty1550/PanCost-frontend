@@ -4,7 +4,6 @@
   border-radius: 10px;
   width: 350px;
   box-sizing: border-box;
-  user-select: none;
   text-align: start;
   background-color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -20,6 +19,7 @@
   border-radius: 15px;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  user-select: none;
 }
 
 .card-receta h2 {

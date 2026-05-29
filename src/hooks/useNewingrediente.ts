@@ -18,6 +18,8 @@ export default function useNewIngrediente() {
     setDispararFetchIngrediente,
   } = useAppcontext();
 
+  const [isLoading, setIsloading] = useState(false);
+
   const handleClose = () => {
     setClosing(true);
 
@@ -28,10 +30,17 @@ export default function useNewIngrediente() {
   };
 
   async function onSubmit(data: CreateIngredienteDTO) {
-    await ingredienteService.addNewIngrediente(data);
-    reset();
-    setDispararFetchIngrediente(!dispararFetchIngrediente);
-    handleClose();
+    try {
+      setIsloading(true);
+      await ingredienteService.addNewIngrediente(data);
+      setDispararFetchIngrediente(!dispararFetchIngrediente);
+      reset();
+      handleClose();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsloading(false);
+    }
   }
 
   return {
@@ -41,5 +50,6 @@ export default function useNewIngrediente() {
     closing,
     register,
     errors,
+    isLoading,
   };
 }

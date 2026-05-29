@@ -54,12 +54,12 @@ export default function useNewReceta() {
 
       await RecetaService.addNewReceta(data);
       setDispararFetchReceta(!dispararFetchReceta);
+      reset();
+      handleClose();
     } catch (error) {
       console.error(error);
     } finally {
       setIsloading(false);
-      reset();
-      handleClose();
     }
   }
 

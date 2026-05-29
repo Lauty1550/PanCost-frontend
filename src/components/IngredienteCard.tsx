@@ -22,7 +22,11 @@ export default function IngredienteCard({ ingrediente }: Props) {
   return (
     <article className="card">
       <header className="card-main">
-        <img src={ingrediente.urlImagen} alt={ingrediente.nombre} />
+        <img
+          src={ingrediente.urlImagen}
+          alt={ingrediente.nombre}
+          draggable={false}
+        />
 
         <section>
           <h2>{ingrediente.nombre}</h2>

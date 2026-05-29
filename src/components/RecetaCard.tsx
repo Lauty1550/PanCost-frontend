@@ -23,7 +23,7 @@ export default function RecetaCard({ receta }: Props) {
   return (
     <article className="card-receta">
       <header>
-        <img src={receta.urlImagen} alt={receta.nombre} />
+        <img src={receta.urlImagen} alt={receta.nombre} draggable={false} />
         <h2>{receta.nombre}</h2>
 
         <hr />
@@ -41,7 +41,7 @@ export default function RecetaCard({ receta }: Props) {
             {ingredientesAMostrar.map((i) => (
               <tr key={i.id}>
                 <td className="td-image">
-                  <img src={i.ingrediente.urlImagen} />
+                  <img src={i.ingrediente.urlImagen} draggable={false} />
                 </td>
                 <td className="td-nombre">{i.ingrediente.nombre}</td>
                 <td>
