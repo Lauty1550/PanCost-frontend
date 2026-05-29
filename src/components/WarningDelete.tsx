@@ -16,26 +16,33 @@ export default function WarningDelete({
 
   return (
     <article className={`modal-delete ${deleteModal ? "open" : "close"}`}>
-      <h1>
-        ¿Esta seguro de querer eliminar el ingrediente <span>{nombre}</span>,
-        Esta accion no se puede deshacer
-      </h1>
-      <div>
+      <div className="delete-icon">⚠</div>
+
+      <h2 className="delete-title">Eliminar ingrediente</h2>
+
+      <p className="delete-text">
+        ¿Seguro que querés eliminar <span>{nombre}</span>?
+      </p>
+
+      <p className="delete-warning">Esta acción no se puede deshacer.</p>
+
+      <div className="delete-actions">
         <button
-          onClick={() => {
-            handleDelete();
-          }}
-        >
-          {" "}
-          BORRAR{" "}
-        </button>
-        <button
+          className="cancel-btn"
           onClick={() => {
             callBack();
           }}
         >
-          {" "}
           CANCELAR
+        </button>
+
+        <button
+          className="confirm-delete-btn"
+          onClick={() => {
+            handleDelete();
+          }}
+        >
+          BORRAR
         </button>
       </div>
     </article>
