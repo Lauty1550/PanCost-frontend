@@ -8,6 +8,7 @@ import useIngredienteCard from "../hooks/useIngredienteCard";
 import WarningDelete from "./WarningDelete";
 import "../css/ModalDelete.css";
 import { useIngredienteContext } from "../hooks/useIngredienteContext";
+import useDelete from "../hooks/useDelete";
 
 type Props = {
   ingrediente: Ingrediente;
@@ -18,6 +19,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
     useIngredienteCard();
   const { setIdIngrediente } = useIngredienteContext();
   const iconColor = "rgba(151, 124, 83)";
+  const { handleDeleteIngrediente } = useDelete();
 
   return (
     <article className="card">
@@ -99,9 +101,11 @@ export default function IngredienteCard({ ingrediente }: Props) {
         className={`modal-delete-overlay ${deleteModal ? "open" : "close"} `}
       >
         <WarningDelete
+          titulo="Eliminar ingrediente"
           nombre={ingrediente.nombre}
           deleteModal={deleteModal}
-          callBack={() => setDeleteModal(false)}
+          onClose={() => setDeleteModal(false)}
+          onConfirm={handleDeleteIngrediente}
         />
       </span>
     </article>

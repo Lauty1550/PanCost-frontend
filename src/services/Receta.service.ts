@@ -39,4 +39,23 @@ export const RecetaService = {
       console.error("Error al crear receta: ", error);
     }
   },
+
+  async deleteReceta(id: number) {
+    try {
+      const resp = await fetch(`${API_URL}/borrar/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        throw new Error(data.message || "Error al eliminar receta");
+      }
+
+      return data;
+    } catch (error) {
+      console.error("Error al eliminar receta:", error);
+      throw error;
+    }
+  },
 };

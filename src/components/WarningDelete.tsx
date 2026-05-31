@@ -1,24 +1,25 @@
 import "../css/ModalDelete.css";
-import useWarningDelete from "../hooks/useWarningDelete";
 
 type Props = {
+  titulo: string;
   nombre: string;
   deleteModal: boolean;
-  callBack: () => void;
+  onClose: () => void;
+  onConfirm: () => void;
 };
 
 export default function WarningDelete({
   nombre,
   deleteModal,
-  callBack,
+  titulo,
+  onClose,
+  onConfirm,
 }: Props) {
-  const { handleDelete } = useWarningDelete();
-
   return (
     <article className={`modal-delete ${deleteModal ? "open" : "close"}`}>
       <div className="delete-icon">⚠</div>
 
-      <h2 className="delete-title">Eliminar ingrediente</h2>
+      <h2 className="delete-title">{titulo}</h2>
 
       <p className="delete-text">
         ¿Seguro que querés eliminar <span>{nombre}</span>?
@@ -27,21 +28,11 @@ export default function WarningDelete({
       <p className="delete-warning">Esta acción no se puede deshacer.</p>
 
       <div className="delete-actions">
-        <button
-          className="cancel-btn"
-          onClick={() => {
-            callBack();
-          }}
-        >
+        <button className="cancel-btn" onClick={onClose}>
           CANCELAR
         </button>
 
-        <button
-          className="confirm-delete-btn"
-          onClick={() => {
-            handleDelete();
-          }}
-        >
+        <button className="confirm-delete-btn" onClick={onConfirm}>
           BORRAR
         </button>
       </div>
