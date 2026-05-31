@@ -1,10 +1,10 @@
-import useRecetas from "../hooks/useRecetasList";
 import MainLoading from "./MainLoading";
 import RecetaCard from "./RecetaCard";
 import "../css/LoadingWrapper.css";
+import useRecetasList from "../hooks/useRecetasList";
 
 export default function RecetasList() {
-  const { recetasFilter, isLoading } = useRecetas();
+  const { recetasFilter, isLoading } = useRecetasList();
 
   return (
     <>
@@ -12,8 +12,12 @@ export default function RecetasList() {
         <span className="loading-wrapper">
           <MainLoading />
         </span>
-      ) : (
+      ) : recetasFilter.length > 0 ? (
         recetasFilter.map((r) => <RecetaCard key={r.id} receta={r} />)
+      ) : (
+        <span className="loading-wrapper">
+          <h2>No se encontraron recetas</h2>
+        </span>
       )}
     </>
   );
