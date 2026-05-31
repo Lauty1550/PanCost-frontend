@@ -1,27 +1,25 @@
-import useCalcularPrecios from "../hooks/useCalcularPrecios";
 import type { Receta } from "../types/Receta";
 import "../css/RecetaCard.css";
-import { useState } from "react";
 import DetallesIcon from "../assets/DetallesIcon";
 import RecetaDetalleModal from "./RecetaDetalleModal";
+import useRecetaCard from "../hooks/useRecetaCard";
 
 type Props = {
   receta: Receta;
 };
 
 export default function RecetaCard({ receta }: Props) {
-  const { calcularPrecioUsado, calcularTotalReceta } = useCalcularPrecios();
-  const total = calcularTotalReceta(receta.ingredientes);
-  const [expandido, setExpandido] = useState(false);
-  const cantMostrar = 3;
-  const masDeTresIngredientes = receta.ingredientes.length > cantMostrar;
-  const restantes = receta.ingredientes.length - cantMostrar;
-
-  const ingredientesAMostrar = expandido
-    ? receta.ingredientes
-    : receta.ingredientes.slice(0, cantMostrar);
-
-  const [mostrarDetalle, setMostrarDetalle] = useState(false);
+  const {
+    calcularPrecioUsado,
+    ingredientesAMostrar,
+    masDeTresIngredientes,
+    mostrarDetalle,
+    restantes,
+    expandido,
+    setExpandido,
+    setMostrarDetalle,
+    total,
+  } = useRecetaCard(receta);
 
   return (
     <article className="card-receta">

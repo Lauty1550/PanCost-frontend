@@ -6,8 +6,12 @@ import { useAppcontext } from "../hooks/useAppContext";
 export default function useRecetas() {
   const [listaRecetas, setListaRecetas] = useState<Receta[]>([]);
   const { query, dispararFetchReceta } = useAppcontext();
-  const recetasFilter = listaRecetas.filter((r) =>
-    r.nombre.toLowerCase().includes(query.toLowerCase()),
+  const recetasFilter = listaRecetas.filter(
+    (r) =>
+      r.nombre.toLowerCase().includes(query.toLowerCase()) ||
+      r.ingredientes.some((i) =>
+        i.ingrediente.nombre.toLocaleLowerCase().includes(query.toLowerCase()),
+      ),
   );
 
   useEffect(() => {
