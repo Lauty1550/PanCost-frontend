@@ -1,12 +1,12 @@
 import "../css/Content.css";
-import Recetas from "./Recetas";
-import Ingredientes from "./Ingredientes";
 import { useAppcontext } from "../hooks/useAppContext";
 import BotonAdd from "./BotonAdd";
 import NewIngrediente from "./NewIngrediente";
 import NewReceta from "./NewReceta";
 import useContent from "../hooks/useContent";
 import { FiSearch } from "react-icons/fi";
+import RecetasList from "./RecetasList";
+import IngredientesList from "./IngredientesList";
 
 export default function Content() {
   const { selection } = useAppcontext();
@@ -29,7 +29,7 @@ export default function Content() {
         </div>
       </form>
       <section className="content">
-        {selection === 0 ? <Recetas /> : <Ingredientes />}
+        {selection === 0 ? <RecetasList /> : <IngredientesList />}
       </section>
       <NewReceta />
       <NewIngrediente />

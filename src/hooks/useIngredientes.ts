@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ingredienteService } from "../services/ingrediente.service";
 import { useIngredienteContext } from "./useIngredienteContext";
 import { useAppcontext } from "./useAppContext";
+import { toast } from "sonner";
 
 export default function useIngredientes() {
   const { setListaIngredientes } = useIngredienteContext();
   const { dispararFetchIngrediente } = useAppcontext();
+  const [isLoading, setIsloading] = useState(false);
 
   useEffect(() => {
     getIngredientes();
@@ -13,7 +15,18 @@ export default function useIngredientes() {
   }, [dispararFetchIngrediente]);
 
   async function getIngredientes() {
-    const resp = await ingredienteService.getAllIngredientes();
-    setListaIngredientes(resp);
+    try {
+      setIsloading(true);
+      const resp = await ingredienteService.getAllIngredientes();
+      setListaIngredientes(resp);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (error) {
+      console.error("Error al obtener ingredientes");
+      toast.error("Error al obtener ingredientes");
+    } finally {
+      setIsloading(false);
+    }
   }
+
+  return { isLoading };
 }

@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import { ingredienteService } from "../services/ingrediente.service";
 import { RecetaService } from "../services/Receta.service";
 import { useAppcontext } from "./useAppContext";
@@ -16,6 +17,7 @@ export default function useDelete() {
     try {
       await ingredienteService.deleteIngrediente(idIngrediente);
       setDispararFetchIngrediente(!dispararFetchIngrediente);
+      toast.success("Ingrediente eliminado");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       console.error("Error al eliminar ingrediente");
@@ -26,9 +28,12 @@ export default function useDelete() {
     try {
       await RecetaService.deleteReceta(id);
       setDispararFetchReceta(!dispararFetchReceta);
+      toast.success("Receta eliminada");
+
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       console.error("Error al eliminar receta");
+      toast.error("Error al eliminar receta");
     }
   }
 

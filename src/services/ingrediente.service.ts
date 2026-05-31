@@ -1,3 +1,4 @@
+import { toast } from "sonner";
 import type { CreateIngredienteDTO } from "../types/Ingrediente";
 
 const API_URL = import.meta.env.VITE_API_URL + "/ingredientes";
@@ -60,7 +61,8 @@ export const ingredienteService = {
       return data;
     } catch (error) {
       if (error instanceof Error) {
-        alert(error.message);
+        toast.warning(error.message);
+        throw Error;
       }
     }
   },

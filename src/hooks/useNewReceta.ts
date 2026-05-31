@@ -4,6 +4,7 @@ import useIngredientes from "../hooks/useIngredientes";
 import { RecetaService } from "../services/Receta.service";
 import { useFieldArray, useForm } from "react-hook-form";
 import type { CreateRecetaDTO } from "../types/Receta";
+import { toast } from "sonner";
 
 export default function useNewReceta() {
   const {
@@ -56,6 +57,7 @@ export default function useNewReceta() {
       setDispararFetchReceta(!dispararFetchReceta);
       reset();
       handleClose();
+      toast.success("Receta creada");
     } catch (error) {
       console.error(error);
     } finally {

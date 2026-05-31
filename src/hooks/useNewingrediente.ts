@@ -3,6 +3,7 @@ import type { CreateIngredienteDTO } from "../types/Ingrediente";
 import { useState } from "react";
 import { useAppcontext } from "./useAppContext";
 import { ingredienteService } from "../services/ingrediente.service";
+import { toast } from "sonner";
 
 export default function useNewIngrediente() {
   const {
@@ -36,6 +37,7 @@ export default function useNewIngrediente() {
       setDispararFetchIngrediente(!dispararFetchIngrediente);
       reset();
       handleClose();
+      toast.success("Ingrediente creado");
     } catch (error) {
       console.error(error);
     } finally {
