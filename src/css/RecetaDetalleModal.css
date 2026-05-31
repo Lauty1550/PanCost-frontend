@@ -1,0 +1,156 @@
+.detalle-receta-modal {
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.detalle-receta-img {
+  width: 100%;
+  height: 320px;
+
+  object-fit: cover;
+
+  border-radius: 1.5rem;
+
+  border: 1px solid #eee5dd;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.detalle-ingredientes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.detalle-ingrediente {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  padding: 1rem;
+
+  border-radius: 1rem;
+
+  border: 1px solid #eee5dd;
+
+  background: #fffdfa;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.detalle-ingrediente:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.detalle-ingrediente img {
+  width: 80px;
+  height: 80px;
+
+  object-fit: cover;
+
+  border-radius: 1rem;
+
+  border: 1px solid #eee5dd;
+
+  flex-shrink: 0;
+}
+
+.detalle-ingrediente-info {
+  flex: 1;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detalle-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  margin-top: 2rem;
+}
+
+.detalle-receta-modal h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 2rem;
+  font-weight: 700;
+
+  color: #4f433a;
+}
+
+.detalle-total {
+  margin: 1.5rem 0;
+
+  padding: 1rem;
+
+  text-align: center;
+
+  border-radius: 1rem;
+
+  background: #f8f3ee;
+
+  border: 1px solid #e6ddd5;
+
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  color: #6b4f3a;
+}
+
+.detalle-receta-modal h3 {
+  margin-bottom: 1rem;
+
+  color: #5e534b;
+
+  font-size: 1.2rem;
+}
+
+.editar-btn {
+  padding: 0.9rem 1.5rem;
+
+  border-radius: 1rem;
+
+  background: #efe6dd;
+
+  color: #6b4f3a;
+
+  font-weight: 600;
+}
+
+.editar-btn:hover {
+  cursor: pointer;
+  background: #e6d8ca;
+}
+
+.eliminar-btn {
+  padding: 0.9rem 1.5rem;
+
+  border-radius: 1rem;
+
+  background: #fbe9e7;
+
+  color: #c65d4b;
+
+  font-weight: 600;
+}
+
+.eliminar-btn:hover {
+  cursor: pointer;
+  background: #f8ddd9;
+}
+
+.detalle-total + h3 {
+  padding-top: 1rem;
+  border-top: 1px solid #eee5dd;
+}

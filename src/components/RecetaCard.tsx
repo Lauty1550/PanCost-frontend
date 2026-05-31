@@ -3,6 +3,7 @@ import type { Receta } from "../types/Receta";
 import "../css/RecetaCard.css";
 import { useState } from "react";
 import DetallesIcon from "../assets/DetallesIcon";
+import RecetaDetalleModal from "./RecetaDetalleModal";
 
 type Props = {
   receta: Receta;
@@ -20,10 +21,17 @@ export default function RecetaCard({ receta }: Props) {
     ? receta.ingredientes
     : receta.ingredientes.slice(0, cantMostrar);
 
+  const [mostrarDetalle, setMostrarDetalle] = useState(false);
+
   return (
     <article className="card-receta">
       <header>
-        <img src={receta.urlImagen} alt={receta.nombre} draggable={false} />
+        <img
+          className="card-receta-img"
+          src={receta.urlImagen}
+          alt={receta.nombre}
+          draggable={false}
+        />
         <h2>{receta.nombre}</h2>
 
         <hr />
@@ -86,10 +94,19 @@ export default function RecetaCard({ receta }: Props) {
           <h4>Costo total de la receta:</h4>
           <span className="total-numero">${total}</span>
         </div>
-        <button className="detalles-boton">
+        <button
+          className="detalles-boton"
+          onClick={() => setMostrarDetalle(true)}
+        >
           <DetallesIcon /> Ver detalles
         </button>
       </footer>
+      {mostrarDetalle && (
+        <RecetaDetalleModal
+          receta={receta}
+          onClose={() => setMostrarDetalle(false)}
+        />
+      )}
     </article>
   );
 }

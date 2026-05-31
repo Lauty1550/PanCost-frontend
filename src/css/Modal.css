@@ -24,6 +24,15 @@
 }
 
 .modal {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-gutter: stable;
+
+  overscroll-behavior: contain;
+
+  clip-path: inset(0 round 2rem);
+
   width: 100%;
   max-width: 640px;
 
