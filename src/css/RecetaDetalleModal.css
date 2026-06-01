@@ -63,11 +63,17 @@
 }
 
 .detalle-ingrediente-info {
-  flex: 0.95rem;
+  flex: 1;
 
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 90px 160px 80px;
+
   align-items: center;
+}
+
+.detalle-ingrediente-info p {
+  text-align: center;
+  margin: 0;
 }
 
 .detalle-actions {
@@ -116,6 +122,32 @@
   font-size: 1.2rem;
 }
 
+.detalle-header {
+  display: grid;
+  grid-template-columns: 1fr 90px 160px 80px;
+
+  align-items: center;
+
+  padding: 0 0.8rem;
+  margin-bottom: 0.5rem;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  color: #8a7d72;
+
+  border-bottom: 1px solid #eee5dd;
+  padding-bottom: 0.75rem;
+}
+
+.detalle-header span:first-child {
+  text-align: left;
+}
+
+.detalle-header span:not(:first-child) {
+  text-align: center;
+}
+
 .editar-btn,
 .eliminar-btn {
   padding: 0.75rem 1.25rem;
@@ -146,4 +178,18 @@
 .detalle-total + h3 {
   padding-top: 1rem;
   border-top: 1px solid #eee5dd;
+}
+
+.ingrediente-usado {
+  text-align: center;
+}
+
+.ingrediente-compra {
+  text-align: center;
+  color: #7a6d63;
+  font-size: 0.9rem;
+}
+
+.ingrediente-costo {
+  text-align: right;
 }

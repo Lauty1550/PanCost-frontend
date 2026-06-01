@@ -31,7 +31,7 @@ export default function RecetaCard({ receta }: Props) {
           draggable={false}
           onClick={() => setMostrarDetalle(true)}
         />
-        <h2>{receta.nombre}</h2>
+        <h2 className="receta-titulo">{receta.nombre}</h2>
 
         <hr />
 

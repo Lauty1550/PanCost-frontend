@@ -23,8 +23,11 @@
   cursor: pointer;
 }
 
-.card-receta h2 {
+.receta-titulo {
   margin: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 300px;
 }
 
 .card-receta hr {

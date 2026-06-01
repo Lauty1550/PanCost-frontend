@@ -45,7 +45,13 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
 
         <div className="detalle-total">Costo total: ${total}</div>
 
-        <h3>Ingredientes</h3>
+        <br />
+        <div className="detalle-header">
+          <span>Ingrediente</span>
+          <span>Usado</span>
+          <span>Compra</span>
+          <span>Costo</span>
+        </div>
 
         <div className="detalle-ingredientes">
           {receta.ingredientes.map((i) => (
@@ -59,9 +65,16 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
               <div className="detalle-ingrediente-info">
                 <strong>{i.ingrediente.nombre}</strong>
 
-                <p>
+                <span className="ingrediente-usado">
                   {i.cantidadUsada} {i.unidad}
-                </p>
+                </span>
+
+                <span className="ingrediente-compra">
+                  {i.ingrediente.cantidadCompra} {i.ingrediente.unidadCompra}
+                  {" ($"}
+                  {i.ingrediente.precioCompra}
+                  {")"}
+                </span>
 
                 <strong className="ingrediente-costo">
                   $

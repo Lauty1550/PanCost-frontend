@@ -49,7 +49,7 @@ export default function NewIngrediente() {
             id="nombreIngrediente"
             {...register("nombre", {
               required: true,
-              maxLength: 25,
+              maxLength: 35,
             })}
             disabled={isLoading}
           />
@@ -59,7 +59,7 @@ export default function NewIngrediente() {
           )}
 
           {errors.nombre?.type === "maxLength" && (
-            <p className="text-error">Máximo 25 caracteres</p>
+            <p className="text-error">Máximo 35 caracteres</p>
           )}
         </section>
 

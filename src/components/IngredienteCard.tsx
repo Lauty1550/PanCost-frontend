@@ -33,7 +33,7 @@ export default function IngredienteCard({ ingrediente }: Props) {
         />
 
         <section>
-          <h2>{ingrediente.nombre}</h2>
+          <h2 className="card-nombre">{ingrediente.nombre}</h2>
           <div className="precio">
             <span className="icon-wrapper">
               <EtiquetaIcon color={iconColor} />
