@@ -2,6 +2,7 @@ import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
 import { useAppcontext } from "../hooks/useAppContext";
 import "../css/newIngrediente.css";
+import { useIngredienteContext } from "../hooks/useIngredienteContext";
 
 export default function NewIngrediente() {
   const {
@@ -14,6 +15,7 @@ export default function NewIngrediente() {
     isLoading,
   } = useNewIngrediente();
   const { enableModalIngrediente } = useAppcontext();
+  const { ingredienteEditar } = useIngredienteContext();
 
   return (
     <div
@@ -33,7 +35,10 @@ export default function NewIngrediente() {
         >
           ✕
         </button>
-        <h2> Crear Ingrediente</h2>
+        <h2>
+          {" "}
+          {ingredienteEditar ? "Editar ingrediente" : "Crear ingrediente"}
+        </h2>
 
         <section className="form-section">
           <label className="form-label" htmlFor="nombreIngrediente">
@@ -155,6 +160,8 @@ export default function NewIngrediente() {
                 alt="cargando"
                 draggable={false}
               />
+            ) : ingredienteEditar ? (
+              "Editar Ingrediente"
             ) : (
               "Guardar ingrediente"
             )}

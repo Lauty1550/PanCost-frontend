@@ -69,12 +69,23 @@ export const ingredienteService = {
 
   async updateIngrediente(id: number, data: CreateIngredienteDTO) {
     try {
+      const formData = new FormData();
+
+      formData.append("nombre", data.nombre);
+
+      formData.append("precioCompra", data.precioCompra.toString());
+
+      formData.append("cantidadCompra", data.cantidadCompra.toString());
+
+      formData.append("unidadCompra", data.unidadCompra);
+
+      if (data.imagen?.[0]) {
+        formData.append("imagen", data.imagen[0]);
+      }
+
       const resp = await fetch(`${API_URL}/modificar/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: formData,
       });
 
       if (!resp.ok) {
@@ -84,6 +95,7 @@ export const ingredienteService = {
       return await resp.json();
     } catch (error) {
       console.error("Error al actualizar ingrediente:", error);
+      toast.error("Error al actualizar ingrediente");
       throw error;
     }
   },

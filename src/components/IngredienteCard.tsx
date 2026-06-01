@@ -9,6 +9,7 @@ import WarningDelete from "./WarningDelete";
 import "../css/ModalDelete.css";
 import { useIngredienteContext } from "../hooks/useIngredienteContext";
 import useDelete from "../hooks/useDelete";
+import { useAppcontext } from "../hooks/useAppContext";
 
 type Props = {
   ingrediente: Ingrediente;
@@ -17,9 +18,10 @@ type Props = {
 export default function IngredienteCard({ ingrediente }: Props) {
   const { dropdown, setDropdown, dropdownRef, deleteModal, setDeleteModal } =
     useIngredienteCard();
-  const { setIdIngrediente } = useIngredienteContext();
+  const { setIdIngrediente, setIngredienteEditar } = useIngredienteContext();
   const iconColor = "rgba(151, 124, 83)";
   const { handleDeleteIngrediente } = useDelete();
+  const { setEnableModalIngrediente } = useAppcontext();
 
   return (
     <article className="card">
@@ -54,7 +56,16 @@ export default function IngredienteCard({ ingrediente }: Props) {
           </span>
 
           <div className={`dropdown ${dropdown ? "open" : "close"}`}>
-            <button className="dropdown-edit-btn">Editar</button>
+            <button
+              className="dropdown-edit-btn"
+              onClick={() => {
+                setIngredienteEditar(ingrediente);
+                setEnableModalIngrediente(true);
+                setDropdown(false);
+              }}
+            >
+              Editar
+            </button>
             <button
               className="dropdown-delete-btn"
               onClick={() => {

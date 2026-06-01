@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import type { CreateIngredienteDTO } from "../types/Ingrediente";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppcontext } from "./useAppContext";
 import { ingredienteService } from "../services/ingrediente.service";
 import { toast } from "sonner";
+import { useIngredienteContext } from "./useIngredienteContext";
 
 export default function useNewIngrediente() {
   const {
@@ -21,11 +22,33 @@ export default function useNewIngrediente() {
 
   const [isLoading, setIsloading] = useState(false);
 
+  const { ingredienteEditar, setIngredienteEditar } = useIngredienteContext();
+
+  useEffect(() => {
+    if (ingredienteEditar) {
+      reset({
+        nombre: ingredienteEditar.nombre,
+        precioCompra: ingredienteEditar.precioCompra,
+        cantidadCompra: ingredienteEditar.cantidadCompra,
+        unidadCompra: ingredienteEditar.unidadCompra,
+      });
+    } else {
+      reset({
+        nombre: "",
+        precioCompra: 0,
+        cantidadCompra: 0,
+        unidadCompra: "g",
+      });
+    }
+  }, [ingredienteEditar, reset]);
+
   const handleClose = () => {
     setClosing(true);
 
     setTimeout(() => {
+      setIngredienteEditar(null);
       setEnableModalIngrediente(false);
+
       setClosing(false);
     }, 100);
   };
@@ -33,11 +56,19 @@ export default function useNewIngrediente() {
   async function onSubmit(data: CreateIngredienteDTO) {
     try {
       setIsloading(true);
-      await ingredienteService.addNewIngrediente(data);
+      if (ingredienteEditar) {
+        await ingredienteService.updateIngrediente(ingredienteEditar.id, data);
+      } else {
+        await ingredienteService.addNewIngrediente(data);
+      }
       setDispararFetchIngrediente(!dispararFetchIngrediente);
       reset();
       handleClose();
-      toast.success("Ingrediente creado");
+      if (ingredienteEditar) {
+        toast.success("Ingrediente editado");
+      } else {
+        toast.success("Ingrediente creado");
+      }
     } catch (error) {
       console.error(error);
     } finally {
