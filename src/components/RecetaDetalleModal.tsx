@@ -1,10 +1,9 @@
 import type { Receta } from "../types/Receta";
-import useCalcularPrecios from "../hooks/useCalcularPrecios";
+
 import "../css/RecetaDetalleModal.css";
 import "../css/Modal.css";
 import WarningDelete from "./WarningDelete";
-import { useEffect, useState } from "react";
-import useDelete from "../hooks/useDelete";
+import useRecetaDetalleModal from "../hooks/useRecetaDetalleModal";
 
 type Props = {
   receta: Receta;
@@ -12,28 +11,15 @@ type Props = {
 };
 
 export default function RecetaDetalleModal({ receta, onClose }: Props) {
-  const { calcularPrecioUsado, calcularTotalReceta } = useCalcularPrecios();
-  const [deleteModal, setDeleteModal] = useState(false);
-  const { handleDeleteReceta } = useDelete();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const total = calcularTotalReceta(receta.ingredientes);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 10);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClose = () => {
-    setIsOpen(false);
-
-    setTimeout(() => {
-      onClose();
-    }, 250);
-  };
+  const {
+    calcularPrecioUsado,
+    deleteModal,
+    handleClose,
+    handleDeleteReceta,
+    isOpen,
+    setDeleteModal,
+    total,
+  } = useRecetaDetalleModal({ receta, onClose });
 
   return (
     <div
@@ -101,6 +87,7 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
 
       <span
         className={`modal-delete-overlay ${deleteModal ? "open" : "close"} `}
+        onClick={(e) => e.stopPropagation()}
       >
         <WarningDelete
           titulo="Eliminar receta"
