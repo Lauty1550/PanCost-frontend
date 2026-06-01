@@ -1,11 +1,11 @@
 .detalle-receta-modal {
   max-width: 900px;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .detalle-receta-img {
   width: 100%;
-  height: 320px;
+  height: 250px;
 
   object-fit: cover;
 
@@ -15,8 +15,8 @@
 
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .detalle-ingredientes {
@@ -28,9 +28,9 @@
 .detalle-ingrediente {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
 
-  padding: 1rem;
+  padding: 0.8rem;
 
   border-radius: 1rem;
 
@@ -50,8 +50,8 @@
 }
 
 .detalle-ingrediente img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 
   object-fit: cover;
 
@@ -63,7 +63,7 @@
 }
 
 .detalle-ingrediente-info {
-  flex: 1;
+  flex: 0.95rem;
 
   display: flex;
   justify-content: space-between;
@@ -75,7 +75,7 @@
   justify-content: flex-end;
   gap: 1rem;
 
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .detalle-receta-modal h2 {
@@ -83,16 +83,16 @@
 
   text-align: center;
 
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 700;
 
   color: #4f433a;
 }
 
 .detalle-total {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 
-  padding: 1rem;
+  padding: 0.8rem;
 
   text-align: center;
 
@@ -102,30 +102,29 @@
 
   border: 1px solid #e6ddd5;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
 
   color: #6b4f3a;
 }
 
 .detalle-receta-modal h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 1.05rem;
 
   color: #5e534b;
 
   font-size: 1.2rem;
 }
 
-.editar-btn {
-  padding: 0.9rem 1.5rem;
-
-  border-radius: 1rem;
-
+.editar-btn,
+.eliminar-btn {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
   background: #efe6dd;
+}
 
+.editar-btn {
   color: #6b4f3a;
-
-  font-weight: 600;
 }
 
 .editar-btn:hover {
@@ -134,15 +133,9 @@
 }
 
 .eliminar-btn {
-  padding: 0.9rem 1.5rem;
-
-  border-radius: 1rem;
-
   background: #fbe9e7;
 
   color: #c65d4b;
-
-  font-weight: 600;
 }
 
 .eliminar-btn:hover {

@@ -29,6 +29,7 @@ export default function RecetaCard({ receta }: Props) {
           src={receta.urlImagen}
           alt={receta.nombre}
           draggable={false}
+          onClick={() => setMostrarDetalle(true)}
         />
         <h2>{receta.nombre}</h2>
 

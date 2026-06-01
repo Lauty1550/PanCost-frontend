@@ -3,7 +3,7 @@ import useCalcularPrecios from "../hooks/useCalcularPrecios";
 import "../css/RecetaDetalleModal.css";
 import "../css/Modal.css";
 import WarningDelete from "./WarningDelete";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDelete from "../hooks/useDelete";
 
 type Props = {
@@ -15,13 +15,36 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
   const { calcularPrecioUsado, calcularTotalReceta } = useCalcularPrecios();
   const [deleteModal, setDeleteModal] = useState(false);
   const { handleDeleteReceta } = useDelete();
+  const [isOpen, setIsOpen] = useState(false);
 
   const total = calcularTotalReceta(receta.ingredientes);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 10);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleClose = () => {
+    setIsOpen(false);
+
+    setTimeout(() => {
+      onClose();
+    }, 250);
+  };
+
   return (
-    <div className="modal-overlay open">
-      <div className="modal detalle-receta-modal open">
-        <button type="button" className="modal-close" onClick={onClose}>
+    <div
+      className={`modal-overlay ${isOpen ? "open" : "close"}`}
+      onClick={handleClose}
+    >
+      <div
+        className={`modal detalle-receta-modal ${isOpen ? "open" : "close"}`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button type="button" className="modal-close" onClick={handleClose}>
           ✕
         </button>
 

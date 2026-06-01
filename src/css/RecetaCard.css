@@ -20,6 +20,7 @@
   aspect-ratio: 3 / 2;
   object-fit: cover;
   user-select: none;
+  cursor: pointer;
 }
 
 .card-receta h2 {
