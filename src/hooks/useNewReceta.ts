@@ -113,5 +113,6 @@ export default function useNewReceta() {
     append,
     remove,
     isLoading,
+    control,
   };
 }

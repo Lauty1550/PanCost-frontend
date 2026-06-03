@@ -1,8 +1,10 @@
+import Select from "react-select";
 import "../css/Modal.css";
 import "../css/NewReceta.css";
 import { useAppcontext } from "../hooks/useAppContext";
 import { useIngredienteContext } from "../hooks/useIngredienteContext";
 import useNewReceta from "../hooks/useNewReceta";
+import { Controller } from "react-hook-form";
 
 export default function NewReceta() {
   const { enableModalReceta, recetaEditar } = useAppcontext();
@@ -20,6 +22,7 @@ export default function NewReceta() {
     append,
     remove,
     isLoading,
+    control,
   } = useNewReceta();
 
   return (
@@ -89,22 +92,34 @@ export default function NewReceta() {
               {/* Ingrediente */}
 
               <div className="field-group">
-                <select
-                  {...register(`ingredientes.${index}.ingredienteId`, {
+                <Controller
+                  control={control}
+                  name={`ingredientes.${index}.ingredienteId`}
+                  rules={{
                     required: true,
-                    valueAsNumber: true,
                     validate: (value) => value !== 0,
-                  })}
-                  disabled={isLoading}
-                >
-                  <option value={0}>Seleccione ingrediente</option>
-
-                  {listaIngredientes.map((ingrediente) => (
-                    <option key={ingrediente.id} value={ingrediente.id}>
-                      {ingrediente.nombre}
-                    </option>
-                  ))}
-                </select>
+                  }}
+                  render={({ field }) => (
+                    <Select
+                      isDisabled={isLoading}
+                      placeholder="Seleccione ingrediente"
+                      options={listaIngredientes.map((ingrediente) => ({
+                        value: ingrediente.id,
+                        label: ingrediente.nombre,
+                      }))}
+                      value={
+                        listaIngredientes
+                          .map((ingrediente) => ({
+                            value: ingrediente.id,
+                            label: ingrediente.nombre,
+                          }))
+                          .find((opcion) => opcion.value === field.value) ||
+                        null
+                      }
+                      onChange={(opcion) => field.onChange(opcion?.value ?? 0)}
+                    />
+                  )}
+                />
 
                 {errors.ingredientes?.[index]?.ingredienteId?.type ===
                   "validate" && (
