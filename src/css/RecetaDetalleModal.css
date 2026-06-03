@@ -193,3 +193,32 @@
 .ingrediente-costo {
   text-align: right;
 }
+
+@media (max-width: 768px) {
+  .detalle-receta-img {
+    height: auto;
+  }
+
+  .detalle-header {
+    display: none;
+  }
+
+  .detalle-ingrediente-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  .detalle-ingrediente-info strong {
+    max-width: 100%;
+
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .ingrediente-costo {
+    text-align: left;
+  }
+}

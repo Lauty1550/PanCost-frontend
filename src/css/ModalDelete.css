@@ -11,6 +11,7 @@
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 .modal-detele-overlay.open {
@@ -50,6 +51,13 @@
     opacity 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .modal-delete {
+    box-sizing: border-box;
+    width: 320px;
+  }
+}
+
 .modal-delete.open {
   transform: scale(1);
   opacity: 1;
@@ -58,6 +66,14 @@
 .modal-delete.close {
   transform: scale(0.9);
   opacity: 0;
+}
+
+.delete-text span {
+  font-weight: 700;
+  color: #4f463f;
+
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .delete-icon {

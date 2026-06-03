@@ -20,6 +20,12 @@
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
+  }
+}
+
 .content-container {
   display: flex;
   flex-direction: column;

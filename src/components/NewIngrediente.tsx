@@ -74,6 +74,7 @@ export default function NewIngrediente() {
               valueAsNumber: true,
               required: true,
               max: 1000000,
+              validate: (value) => value > 0,
             })}
             disabled={isLoading}
           />
@@ -84,6 +85,10 @@ export default function NewIngrediente() {
 
           {errors.precioCompra?.type === "max" && (
             <p className="text-error">El precio no puede superar $1000000</p>
+          )}
+
+          {errors.precioCompra?.type === "validate" && (
+            <p className="text-error">El precio debe ser mayor a $0</p>
           )}
         </section>
 
@@ -98,6 +103,7 @@ export default function NewIngrediente() {
               valueAsNumber: true,
               required: true,
               max: 1000000,
+              validate: (value) => value > 0,
             })}
             disabled={isLoading}
           />
@@ -108,6 +114,10 @@ export default function NewIngrediente() {
 
           {errors.cantidadCompra?.type === "max" && (
             <p className="text-error">La cantidad no puede superar 1000000</p>
+          )}
+
+          {errors.cantidadCompra?.type === "validate" && (
+            <p className="text-error">La cantidad debe ser mayor a 0</p>
           )}
         </section>
 

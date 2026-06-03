@@ -20,6 +20,18 @@
   object-fit: cover;
 }
 
+@media (max-width: 768px) {
+  .card {
+    width: 310px;
+  }
+  .dots {
+    top: 0;
+  }
+  .card img {
+    width: 100px;
+  }
+}
+
 .card-nombre {
   text-overflow: ellipsis;
   overflow: hidden;

@@ -84,7 +84,7 @@ export default function NewReceta() {
         </section>
 
         {/* Ingredientes */}
-        <section className="ingredients-section">
+        <section className="ingredientes-section">
           <h3 className="section-title">Ingredientes</h3>
 
           {fields.map((field, index) => (
@@ -106,17 +106,41 @@ export default function NewReceta() {
                       options={listaIngredientes.map((ingrediente) => ({
                         value: ingrediente.id,
                         label: ingrediente.nombre,
+                        image: ingrediente.urlImagen,
                       }))}
                       value={
                         listaIngredientes
                           .map((ingrediente) => ({
                             value: ingrediente.id,
                             label: ingrediente.nombre,
+                            image: ingrediente.urlImagen,
                           }))
                           .find((opcion) => opcion.value === field.value) ||
                         null
                       }
                       onChange={(opcion) => field.onChange(opcion?.value ?? 0)}
+                      formatOptionLabel={(option) => (
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
+                          <img
+                            src={option.image}
+                            alt={option.label}
+                            style={{
+                              width: "24px",
+                              height: "24px",
+                              borderRadius: "4px",
+                              objectFit: "cover",
+                            }}
+                          />
+
+                          <span>{option.label}</span>
+                        </div>
+                      )}
                     />
                   )}
                 />
