@@ -58,4 +58,31 @@ export const RecetaService = {
       throw error;
     }
   },
+
+  async updateReceta(id: number, data: CreateRecetaDTO) {
+    try {
+      const formData = new FormData();
+
+      formData.append("nombre", data.nombre);
+
+      formData.append("ingredientes", JSON.stringify(data.ingredientes));
+
+      if (data.imagen?.[0]) {
+        formData.append("imagen", data.imagen[0]);
+      }
+
+      const resp = await fetch(`${API_URL}/editar/${id}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (!resp.ok) {
+        throw new Error("Error al actualizar la receta");
+      }
+
+      return await resp.json();
+    } catch (error) {
+      console.error("Error al actualizar la receta", error);
+    }
+  },
 };

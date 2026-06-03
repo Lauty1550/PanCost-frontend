@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppcontext } from "../hooks/useAppContext";
 import useIngredientes from "../hooks/useIngredientes";
 import { RecetaService } from "../services/Receta.service";
@@ -33,15 +33,41 @@ export default function useNewReceta() {
   ] as const;
 
   const [closing, setClosing] = useState(false);
-  const { setEnableModalReceta, setDispararFetchReceta, dispararFetchReceta } =
-    useAppcontext();
+  const {
+    setEnableModalReceta,
+    setDispararFetchReceta,
+    dispararFetchReceta,
+    recetaEditar,
+    setRecetaEditar,
+  } = useAppcontext();
 
   const [isLoading, setIsloading] = useState(false);
 
   useIngredientes();
 
+  useEffect(() => {
+    if (!recetaEditar) {
+      reset({
+        nombre: "",
+        ingredientes: [],
+      });
+      return;
+    }
+
+    reset({
+      nombre: recetaEditar.nombre,
+
+      ingredientes: recetaEditar.ingredientes.map((i) => ({
+        ingredienteId: i.ingredienteId,
+        cantidadUsada: i.cantidadUsada,
+        unidad: i.unidad,
+      })),
+    });
+  }, [recetaEditar, reset]);
+
   const handleClose = () => {
     setClosing(true);
+    setRecetaEditar(null);
 
     setTimeout(() => {
       setEnableModalReceta(false);
@@ -53,13 +79,22 @@ export default function useNewReceta() {
     try {
       setIsloading(true);
 
-      await RecetaService.addNewReceta(data);
-      setDispararFetchReceta(!dispararFetchReceta);
+      if (recetaEditar) {
+        await RecetaService.updateReceta(recetaEditar.id, data);
+        toast.success("Receta editada");
+      } else {
+        await RecetaService.addNewReceta(data);
+        toast.success("Receta creada");
+      }
+
       reset();
       handleClose();
-      toast.success("Receta creada");
+      setDispararFetchReceta(!dispararFetchReceta);
     } catch (error) {
-      console.error(error);
+      console.error("Ocurrio un error", error);
+      toast.error(
+        recetaEditar ? "Error al editar receta" : "Error al crear receta",
+      );
     } finally {
       setIsloading(false);
     }

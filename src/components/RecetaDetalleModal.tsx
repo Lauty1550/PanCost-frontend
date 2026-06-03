@@ -4,6 +4,7 @@ import "../css/RecetaDetalleModal.css";
 import "../css/Modal.css";
 import WarningDelete from "./WarningDelete";
 import useRecetaDetalleModal from "../hooks/useRecetaDetalleModal";
+import { useAppcontext } from "../hooks/useAppContext";
 
 type Props = {
   receta: Receta;
@@ -20,6 +21,8 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
     setDeleteModal,
     total,
   } = useRecetaDetalleModal({ receta, onClose });
+
+  const { setRecetaEditar, setEnableModalReceta } = useAppcontext();
 
   return (
     <div
@@ -90,7 +93,16 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
         </div>
 
         <div className="detalle-actions">
-          <button className="editar-btn">Editar</button>
+          <button
+            className="editar-btn"
+            onClick={() => {
+              setRecetaEditar(receta);
+              setEnableModalReceta(true);
+              handleClose();
+            }}
+          >
+            Editar
+          </button>
 
           <button className="eliminar-btn" onClick={() => setDeleteModal(true)}>
             Eliminar

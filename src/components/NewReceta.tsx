@@ -5,7 +5,7 @@ import { useIngredienteContext } from "../hooks/useIngredienteContext";
 import useNewReceta from "../hooks/useNewReceta";
 
 export default function NewReceta() {
-  const { enableModalReceta } = useAppcontext();
+  const { enableModalReceta, recetaEditar } = useAppcontext();
   const { listaIngredientes } = useIngredienteContext();
   const {
     errors,
@@ -40,7 +40,7 @@ export default function NewReceta() {
         >
           ✕
         </button>
-        <h2> Crear Receta</h2>
+        <h2>{recetaEditar ? "Editar receta" : "Crear receta"}</h2>
 
         <section className="form-section">
           <label className="form-label" htmlFor="nombreReceta">
@@ -189,6 +189,8 @@ export default function NewReceta() {
                 alt="cargando"
                 draggable={false}
               />
+            ) : recetaEditar ? (
+              "Editar receta"
             ) : (
               "Guardar receta"
             )}
