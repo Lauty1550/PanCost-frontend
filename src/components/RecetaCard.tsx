@@ -46,7 +46,7 @@ export default function RecetaCard({ receta }: Props) {
 
           <tbody>
             {ingredientesAMostrar.map((i) => (
-              <tr key={i.id}>
+              <tr key={i.id} onClick={() => setMostrarDetalle(true)}>
                 <td className="td-image">
                   <img src={i.ingrediente.urlImagen} draggable={false} />
                 </td>

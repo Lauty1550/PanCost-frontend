@@ -7,10 +7,12 @@ import useContent from "../hooks/useContent";
 import { FiSearch } from "react-icons/fi";
 import RecetasList from "./RecetasList";
 import IngredientesList from "./IngredientesList";
+import { IoMdClose } from "react-icons/io";
 
 export default function Content() {
   const { selection } = useAppcontext();
-  const { input, handleChange, onSubmit, inputRef, focusInput } = useContent();
+  const { input, handleChange, onSubmit, inputRef, focusInput, clearQuery } =
+    useContent();
 
   return (
     <main className="content-container">
@@ -26,6 +28,7 @@ export default function Content() {
             onChange={handleChange}
             autoComplete="off"
           />
+          <IoMdClose className="close-search-icon" onClick={clearQuery} />
         </div>
       </form>
       <section className="content">

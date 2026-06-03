@@ -18,9 +18,17 @@ export default function useContent() {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     if (value === " " && input === "") return;
+    if (value.length > 25) {
+      return;
+    }
 
     setInput(value);
     debouncedSetQuery(value);
+  }
+
+  function clearQuery() {
+    setQuery("");
+    setInput("");
   }
 
   function onSubmit(e: React.SubmitEvent<HTMLFormElement>) {
@@ -31,5 +39,5 @@ export default function useContent() {
     inputRef.current?.focus();
   }
 
-  return { input, handleChange, onSubmit, inputRef, focusInput };
+  return { input, handleChange, onSubmit, inputRef, focusInput, clearQuery };
 }

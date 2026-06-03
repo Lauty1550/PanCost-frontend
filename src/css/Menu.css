@@ -1,41 +1,57 @@
 .menu {
   display: flex;
-  gap: 20px;
-  border: 1px solid rgb(82 71 71 / 50%);
-  border-radius: 5px;
-  padding: 5px;
-  align-items: center;
-  justify-content: space-around;
+  gap: 12px;
+
+  padding: 6px;
+
+  border: 1px solid #e8ddd3;
+  border-radius: 1.5rem;
+
+  background: #fffdfb;
+
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.03),
+    0 12px 40px rgba(83, 60, 40, 0.05);
+
   user-select: none;
 }
 
 .menu-selection,
 .active {
-  padding: 10px;
+  flex: 1;
+
+  padding: 0.75rem 1.5rem;
+
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 1rem;
+
+  background: transparent;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+
+  cursor: pointer;
+}
+
+.menu-selection {
+  color: #6b5a4d;
 }
 
 .menu-selection:hover {
-  border: 1px solid grey;
-  background-color: rgb(77 74 74 / 30%);
-  cursor: pointer;
-}
-
-.menu-selection h2,
-.active h2 {
-  margin: 0;
-}
-
-.menu-selection button {
-  background-color: transparent;
-  border: none;
+  background: #f5efe9;
 }
 
 .active {
-  background-color: wheat;
-}
+  background: #efe6dd;
 
-.active:hover {
-  cursor: pointer;
+  border-color: #e2d4c6;
+
+  color: #4f433a;
+
+  box-shadow: 0 4px 12px rgba(83, 60, 40, 0.08);
 }
