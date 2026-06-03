@@ -1,7 +1,7 @@
 import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
 import { useAppcontext } from "../hooks/useAppContext";
-import "../css/newIngrediente.css";
+import "../css/NewIngrediente.css";
 import { useIngredienteContext } from "../hooks/useIngredienteContext";
 
 export default function NewIngrediente() {
@@ -117,7 +117,7 @@ export default function NewIngrediente() {
           )}
 
           {errors.cantidadCompra?.type === "validate" && (
-            <p className="text-error">La cantidad debe ser mayor a 0</p>
+            <p className="text-error">La cantidad debe ser mayor a 0f</p>
           )}
         </section>
 

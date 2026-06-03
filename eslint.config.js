@@ -3,6 +3,7 @@ import tseslint from "typescript-eslint";
 import reactPlugin from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
+import importPlugin from "eslint-plugin-import";
 
 export default [
   js.configs.recommended,
@@ -18,6 +19,7 @@ export default [
     plugins: {
       react: reactPlugin,
       "react-hooks": reactHooks,
+      import: importPlugin,
     },
 
     languageOptions: {
@@ -29,6 +31,10 @@ export default [
     settings: {
       react: {
         version: "detect",
+      },
+
+      "import/resolver": {
+        typescript: true,
       },
     },
 
@@ -43,6 +49,10 @@ export default [
       // TS
       "@typescript-eslint/no-unused-vars": "warn",
       "no-unused-vars": "off",
+
+      // Imports
+      "import/no-unresolved": "error",
+      "import/no-duplicates": "warn",
     },
   },
 ];
