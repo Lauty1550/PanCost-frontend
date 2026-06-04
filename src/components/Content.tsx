@@ -32,7 +32,13 @@ export default function Content() {
         </div>
       </form>
       <section className="content">
-        {selection === 0 ? <RecetasList /> : <IngredientesList />}
+        <div className={selection === 0 ? "visible-grid" : "hidden-grid"}>
+          <RecetasList />
+        </div>
+
+        <div className={selection === 1 ? "visible-grid" : "hidden-grid"}>
+          <IngredientesList />
+        </div>
       </section>
       <NewReceta />
       <NewIngrediente />

@@ -1,8 +1,8 @@
-import useNewIngrediente from "../hooks/useNewingrediente";
 import "../css/Modal.css";
 import { useAppcontext } from "../hooks/useAppContext";
 import "../css/NewIngrediente.css";
 import { useIngredienteContext } from "../hooks/useIngredienteContext";
+import useNewIngrediente from "../hooks/useNewIngrediente";
 
 export default function NewIngrediente() {
   const {

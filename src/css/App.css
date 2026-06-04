@@ -2,10 +2,27 @@
   max-width: 1200px;
   margin: 0 auto;
   /*width: 100%; */
-  padding: 10px;
+  /* padding: 10px; */
   font-family: "Inter", sans-serif;
 }
 
 body {
   background-color: rgba(251, 250, 248);
+}
+
+.visible-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
+  gap: 15px;
+  justify-content: center;
+}
+
+.hidden-grid {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .visible-grid {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
+  }
 }

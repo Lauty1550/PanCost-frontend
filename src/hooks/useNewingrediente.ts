@@ -18,6 +18,8 @@ export default function useNewIngrediente() {
     setEnableModalIngrediente,
     dispararFetchIngrediente,
     setDispararFetchIngrediente,
+    setDispararFetchReceta,
+    dispararFetchReceta,
   } = useAppcontext();
 
   const [isLoading, setIsloading] = useState(false);
@@ -62,6 +64,8 @@ export default function useNewIngrediente() {
         await ingredienteService.addNewIngrediente(data);
       }
       setDispararFetchIngrediente(!dispararFetchIngrediente);
+      setDispararFetchReceta(!dispararFetchReceta);
+
       reset();
       handleClose();
       if (ingredienteEditar) {

@@ -9,21 +9,14 @@
     0 4px 20px rgba(0, 0, 0, 0.03),
     0 12px 40px rgba(83, 60, 40, 0.05);
 
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+
   margin-top: 20px;
   text-align: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
-  gap: 15px;
+
   width: 100%;
   justify-content: center;
-}
-
-@media (max-width: 768px) {
-  .content {
-    grid-template-columns: repeat(auto-fill, minmax(310px, 310px));
-  }
 }
 
 .content-container {
