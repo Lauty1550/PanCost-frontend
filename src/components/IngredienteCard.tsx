@@ -40,7 +40,13 @@ export default function IngredienteCard({ ingrediente }: Props) {
             </span>
             <div className="info-wrapper">
               <p>Precio de compra</p>
-              <h4>${ingrediente.precioCompra}</h4>
+              <h4>
+                $
+                {Intl.NumberFormat("es-AR", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }).format(ingrediente.precioCompra)}
+              </h4>
             </div>
           </div>
         </section>
@@ -103,7 +109,11 @@ export default function IngredienteCard({ ingrediente }: Props) {
 
           <div className="info-wrapper">
             <p>Cantidad</p>
-            <h4> {ingrediente.cantidadCompra}</h4>
+            <h4>
+              {Intl.NumberFormat("es-AR", {
+                maximumFractionDigits: 0,
+              }).format(ingrediente.cantidadCompra)}
+            </h4>
           </div>
         </section>
       </footer>
