@@ -56,10 +56,15 @@ export default function RecetaCard({ receta }: Props) {
                 </td>
                 <td className="table-costo">
                   $
-                  {calcularPrecioUsado(
-                    i.ingrediente.id,
-                    i.cantidadUsada,
-                    i.unidad,
+                  {new Intl.NumberFormat("es-AR", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(
+                    calcularPrecioUsado(
+                      i.ingrediente.id,
+                      i.cantidadUsada,
+                      i.unidad,
+                    ),
                   )}
                 </td>
               </tr>
@@ -91,7 +96,13 @@ export default function RecetaCard({ receta }: Props) {
       <footer className="card-receta-footer">
         <div className="total-receta">
           <h4>Costo total de la receta:</h4>
-          <span className="total-numero">${total}</span>
+          <span className="total-numero">
+            $
+            {new Intl.NumberFormat("es-AR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }).format(total)}
+          </span>
         </div>
         <button
           className="detalles-boton"

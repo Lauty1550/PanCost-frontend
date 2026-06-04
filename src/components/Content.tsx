@@ -28,7 +28,9 @@ export default function Content() {
             onChange={handleChange}
             autoComplete="off"
           />
-          <IoMdClose className="close-search-icon" onClick={clearQuery} />
+          {input.length > 0 && (
+            <IoMdClose className="close-search-icon" onClick={clearQuery} />
+          )}
         </div>
       </form>
       <section className="content">

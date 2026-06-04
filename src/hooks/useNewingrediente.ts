@@ -39,7 +39,7 @@ export default function useNewIngrediente() {
         nombre: "",
         precioCompra: 0,
         cantidadCompra: 0,
-        unidadCompra: "g",
+        unidadCompra: "kg",
       });
     }
   }, [ingredienteEditar, reset]);

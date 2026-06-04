@@ -46,7 +46,16 @@ export default function RecetaDetalleModal({ receta, onClose }: Props) {
 
         <h2>{receta.nombre}</h2>
 
-        <div className="detalle-total">Costo total: ${total}</div>
+        <div className="detalle-total">
+          Costo total:{" "}
+          <span className="detalle-total-precio">
+            $
+            {Intl.NumberFormat("es-AR", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }).format(total)}
+          </span>
+        </div>
 
         <br />
         <div className="detalle-header">

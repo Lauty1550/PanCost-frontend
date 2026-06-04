@@ -104,14 +104,24 @@
 
   border-radius: 1rem;
 
-  background: #f8f3ee;
+  background: linear-gradient(135deg, #fff3e6, #f8f3ee);
 
-  border: 1px solid #e6ddd5;
+  border: 1px solid rgba(107, 79, 58, 0.2);
 
   font-size: 1rem;
   font-weight: 700;
 
-  color: #6b4f3a;
+  color: #5a3d2b;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  position: relative;
+}
+
+.detalle-total-precio {
+  color: #c93f3f;
+  font-weight: 800;
+  font-size: 1.05rem;
 }
 
 .detalle-receta-modal h3 {

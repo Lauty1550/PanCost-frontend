@@ -49,10 +49,22 @@
   color: #888;
   font-size: 18px;
   cursor: pointer;
+  z-index: 6;
 }
 .search-icon {
   left: 12px;
 }
 .close-search-icon {
   right: 12px;
+}
+
+.search {
+  position: sticky;
+  top: 10px;
+  z-index: 5;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 10px 0;
 }
