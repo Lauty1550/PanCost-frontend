@@ -1,73 +1,60 @@
-# React + TypeScript + Vite
+# PanCost
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sistema de gestión de costos para panaderías y emprendimientos gastronómicos.**
 
-Currently, two official plugins are available:
+PanCost permite calcular automáticamente el costo de elaboración de productos a partir de los ingredientes utilizados en cada receta. Actualmente se encuentra en uso por una panadería local para gestionar sus costos de producción.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎬  Preview del sistema
+![Preview landing](https://github.com/Lauty1550/PanCost-frontend/releases/download/V.1.0/Preview.gif)
 
-## React Compiler
+## 🎯 Objetivo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Determinar de forma rápida y precisa el costo real de cada receta, evitando cálculos manuales y facilitando la toma de decisiones sobre precios de venta.
 
-## Expanding the ESLint configuration
+## ✨ Características
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* Gestión de ingredientes.
+* Registro del precio y cantidad de compra.
+* Creación y edición de recetas.
+* Cálculo automático de costos por ingrediente.
+* Cálculo del costo total de producción.
+* Carga de imágenes para ingredientes y recetas.
+* Interfaz responsive para PC y dispositivos móviles.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tecnologías utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Frontend
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+* React
+* TypeScript
+* React Hook Form
+* React Select
+* CSS
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Backend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+* Express
+* TypeScript
+* Prisma ORM
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Base de datos
+
+* PostgreSQL
+
+### Almacenamiento de imágenes
+
+* Cloudinary
+
+## 🏗️ Arquitectura
+
+El sistema utiliza una arquitectura compuesta por:
+
+* Frontend en React desplegado en Vercel.
+* API REST desarrollada con Express.
+* Base de datos PostgreSQL.
+* Prisma como capa de acceso a datos.
+* Cloudinary para almacenamiento de imágenes.
+
+## 📄 Licencia
+
+Este proyecto se distribuye bajo la licencia **MIT**.
